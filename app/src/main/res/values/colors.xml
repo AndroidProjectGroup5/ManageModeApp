@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="managemode_cobalt">#346494</color>
+    <color name="managemode_lightblue">#8CC6FF</color>
+    <color name="managemode_blue">#64A2E0</color>
+    <color name="managemode_golden">#946311</color>
+    <color name="managemode_orange">#E08D00</color>
+</resources>

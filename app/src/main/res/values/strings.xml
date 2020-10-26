@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Manage Mode</string>
+    <string name="et_username">Username</string>
+    <string name="et_password">Password</string>
+    <string name="et_name">Name</string>
+    <string name="create_password">Type the new password</string>
+    <string name="create_project">Create Project</string>
+    <string name="btnLogin">LOGIN</string>
+    <string name="btnRegister">REGISTER</string>
+    <string name="btnCreate">CREATE</string>
+    <string name="btnBack">Back</string>
+    <string name="addEmployee">Add Employee</string>
+    <string name="addTask">Add Task</string>
+    <string name="viewAttendance">View Attendance</string>
+    <string name="viewEmployee">View Employees</string>
+    <string name="viewTasks">View Tasks</string>
+    <string name="viewProjects">View Projects</string>
+    <string name="viewProject">View Project</string>
+    <string name="chooseEmployee">Choose Employee</string>
+    <string name="markAttendance">Mark Attendance</string>
+    <string name="projectTitle">Project Title</string>
+    <string name="description">Description</string>
+    <string name="inputDate">Enter Date</string>
+    <string name="projectsList">Projects List</string>
+    <string name="clockIn">Clock In Time</string>
+    <string name="clockOut">Clock Out Time</string>
+</resources>
