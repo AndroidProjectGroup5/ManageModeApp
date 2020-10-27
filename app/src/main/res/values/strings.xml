@@ -24,4 +24,6 @@
     <string name="projectsList">Projects List</string>
     <string name="clockIn">Clock In Time</string>
     <string name="clockOut">Clock Out Time</string>
+    <string name="LogoDescription">App Logo</string>
+
 </resources>

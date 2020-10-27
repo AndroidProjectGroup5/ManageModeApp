@@ -9,7 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ManageModeTheme">
-        <activity android:name=".MarkAttendanceActivity"></activity>
+        <activity android:name=".FirstStartingSplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MarkAttendanceActivity" />
         <activity android:name=".ViewAllProjectsActivity" />
         <activity android:name=".CreateProjectActivity" />
         <activity android:name=".ViewProjectActivity" />
@@ -18,8 +25,6 @@
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
