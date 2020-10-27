@@ -25,5 +25,27 @@
     <string name="clockIn">Clock In Time</string>
     <string name="clockOut">Clock Out Time</string>
     <string name="LogoDescription">App Logo</string>
+    <string-array name="txtProjectNames">
+        <item>Project 1</item>
+        <item>Project 2</item>
+        <item>Project 3</item>
+    </string-array>
+    <string-array name="txtStatues">
+        <item>Not started</item>
+        <item>On going</item>
+        <item>Finished</item>
+    </string-array>
+    <string-array name="txtEmployee">
+        <item>Employee 1</item>
+        <item>Employee 1</item>
+        <item>Employee 1</item>
+    </string-array>
+    <string name="Projecprompt">Select Project</string>
+    <string name="Statusprompt">Select Status</string>
+    <string name="txtTaskName">Task Name</string>
+    <string name="hintTaskDescription">Task Description</string>
+    <string name="btnAddTask">Add Task</string>
+    <string name="promptAssignee">Select Employee</string>
+
 
 </resources>

@@ -11,6 +11,7 @@ public class HomeActivity extends AppCompatActivity {
 
     //############ Declaring attributes ############//
     Button btn_register;
+    Button btn_addtask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,11 +20,20 @@ public class HomeActivity extends AppCompatActivity {
 
 
         btn_register = findViewById(R.id.btn_Register);
+        btn_addtask = findViewById(R.id.btn_AddTask);
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, AddEmployeeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_addtask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, AddTaskActivity.class);
                 startActivity(intent);
             }
         });
