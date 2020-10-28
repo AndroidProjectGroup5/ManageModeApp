@@ -46,6 +46,7 @@
     <string name="hintTaskDescription">Task Description</string>
     <string name="btnAddTask">Add Task</string>
     <string name="promptAssignee">Select Employee</string>
+    <string name="employeeList">Employee List</string>
 
 
 </resources>
