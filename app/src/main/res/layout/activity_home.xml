@@ -53,10 +53,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Register3" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_vProject" />
 
     <Button
-        android:id="@+id/btn_Register3"
+        android:id="@+id/btn_vProject"
         style="@style/ButtonStyle"
         android:layout_width="226dp"
         android:layout_height="50dp"
@@ -68,10 +68,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Register4" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_cProject" />
 
     <Button
-        android:id="@+id/btn_Register4"
+        android:id="@+id/btn_cProject"
         style="@style/ButtonStyle"
         android:layout_width="226dp"
         android:layout_height="50dp"

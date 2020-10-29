@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class AddEmployeeActivity extends AppCompatActivity {
 
@@ -27,6 +28,7 @@ public class AddEmployeeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String usernameValue = create_username.getText().toString();
                 String passwordValue = create_password.getText().toString();
+                Toast.makeText(AddEmployeeActivity.this, "Employee was successfully created!", Toast.LENGTH_SHORT).show();
             }
         });
     }
