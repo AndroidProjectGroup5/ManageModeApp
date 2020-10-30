@@ -37,8 +37,8 @@
     </string-array>
     <string-array name="txtEmployee">
         <item>Employee 1</item>
-        <item>Employee 1</item>
-        <item>Employee 1</item>
+        <item>Employee 2</item>
+        <item>Employee 3</item>
     </string-array>
     <string name="Projecprompt">Select Project</string>
     <string name="Statusprompt">Select Status</string>
@@ -47,6 +47,12 @@
     <string name="btnAddTask">Add Task</string>
     <string name="promptAssignee">Select Employee</string>
     <string name="employeeList">Employee List</string>
+    <string name="txtViewTask">View Task</string>
+    <string name="txtProjectName">Project Name</string>
+    <string name="txtAssignee">Assignee</string>
+    <string name="txtViewTaskStatus">Status</string>
+    <string name="txtChangeStatus">Change Status</string>
+    <string name="txtSaveChangeStatus">Save</string>
 
 
 </resources>

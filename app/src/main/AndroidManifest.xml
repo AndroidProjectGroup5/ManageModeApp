@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ManageModeTheme">
-        <activity android:name=".ViewEmployeeActivity"/>
+        <activity android:name=".ChangeTaskActivity"></activity>
+        <activity android:name=".ViewTaskActivity" />
+        <activity android:name=".ViewEmployeeActivity" />
         <activity android:name=".AddTaskActivity" />
         <activity android:name=".FirstStartingSplashActivity">
             <intent-filter>
