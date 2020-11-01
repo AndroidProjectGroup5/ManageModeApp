@@ -53,6 +53,7 @@
     <string name="txtViewTaskStatus">Status</string>
     <string name="txtChangeStatus">Change Status</string>
     <string name="txtSaveChangeStatus">Save</string>
+    <string name="btnAddEmployee">Add Employee</string>
 
 
 </resources>
