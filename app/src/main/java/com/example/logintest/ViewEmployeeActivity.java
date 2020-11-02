@@ -9,8 +9,7 @@ import android.widget.Button;
 
 public class ViewEmployeeActivity extends AppCompatActivity {
 
-    Button btn_back;
-    Button btn_addEmp;
+    Button btn_back, btn_addEmp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

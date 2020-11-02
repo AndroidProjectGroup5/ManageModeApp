@@ -24,8 +24,8 @@ public class HomeActivity extends AppCompatActivity {
 
 
         //----- Setting attributes to their objects -----//
-        btn_register = findViewById(R.id.btn_Register);
-        btn_addtask = findViewById(R.id.btn_AddTask);
+    //    btn_register = findViewById(R.id.btn_Register);
+    //    btn_addtask = findViewById(R.id.btn_AddTask);
         btn_Attendance = findViewById(R.id.btn_Attendance);
         btn_cProject = findViewById(R.id.btn_cProject);
         btn_vProject = findViewById(R.id.btn_vProject);
@@ -56,7 +56,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        btn_register.setOnClickListener(new View.OnClickListener() {
+    /*   btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, AddEmployeeActivity.class);
@@ -64,19 +64,21 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+     */
+
         btn_vEmp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this, ViewEmployeeActivity.class));
             }
         });
-        btn_addtask.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, AddTaskActivity.class);
-                startActivity(intent);
-            }
-        });
+//        btn_addtask.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(HomeActivity.this, AddTaskActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         btn_vTask.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,9 +87,5 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-
     }
 }

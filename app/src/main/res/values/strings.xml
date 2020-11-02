@@ -10,7 +10,7 @@
     <string name="btnCreate">CREATE</string>
     <string name="btnBack">Back</string>
     <string name="addEmployee">Add Employee</string>
-    <string name="addTask">Add Task</string>
+    <string name="addTask">Add New Task</string>
     <string name="viewAttendance">View Attendance</string>
     <string name="viewEmployee">View Employees</string>
     <string name="viewTasks">View Tasks</string>
@@ -54,6 +54,6 @@
     <string name="txtChangeStatus">Change Status</string>
     <string name="txtSaveChangeStatus">Save</string>
     <string name="btnAddEmployee">Add Employee</string>
-
+    <string name="btnCreateNewProject">Create New Project</string>
 
 </resources>
