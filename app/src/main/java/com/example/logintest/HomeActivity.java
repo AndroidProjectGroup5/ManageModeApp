@@ -27,7 +27,7 @@ public class HomeActivity extends AppCompatActivity {
     //    btn_register = findViewById(R.id.btn_Register);
     //    btn_addtask = findViewById(R.id.btn_AddTask);
         btn_Attendance = findViewById(R.id.btn_Attendance);
-        btn_cProject = findViewById(R.id.btn_cProject);
+    //    btn_cProject = findViewById(R.id.btn_cProject);
         btn_vProject = findViewById(R.id.btn_vProject);
         btn_vEmp = findViewById(R.id.btn_ViewEmployees);
         btn_vTask = findViewById(R.id.btn_ViewTask);
@@ -42,17 +42,17 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        btn_cProject.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, CreateProjectActivity.class));
-            }
-        });
+//        btn_cProject.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeActivity.this, CreateProjectActivity.class));
+//            }
+//        });
 
         btn_vProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ViewProjectActivity.class));
+                startActivity(new Intent(HomeActivity.this, ViewAllProjectsActivity.class));
             }
         });
 

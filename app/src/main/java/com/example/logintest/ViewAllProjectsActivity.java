@@ -16,7 +16,7 @@ public class ViewAllProjectsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_all_projects);
 
-        btn_cProject = findViewById(R.id.btn_cProject);
+        btn_cProject = findViewById(R.id.btn_cProject2);
 
         btn_cProject.setOnClickListener(new View.OnClickListener() {
             @Override
