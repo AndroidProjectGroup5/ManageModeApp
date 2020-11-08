@@ -9,6 +9,19 @@
     tools:context=".ViewTaskActivity">
 
     <Button
+        android:id="@+id/btnBackViewTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="168dp"
+        android:layout_marginBottom="72dp"
+        android:text="@string/btnBack"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.974"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_AddTask" />
+
+    <Button
         android:id="@+id/btn_AddTask"
         style="@style/ButtonStyle"
         android:layout_width="226dp"
@@ -111,7 +124,8 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtTaskDescription"
-        app:layout_constraintTop_toBottomOf="@+id/txtSetTaskName" />
+        app:layout_constraintTop_toBottomOf="@+id/txtSetTaskName"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/txtAssignee"
@@ -139,7 +153,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.86"
         app:layout_constraintStart_toEndOf="@+id/txtAssignee"
-        app:layout_constraintTop_toBottomOf="@+id/SetTextTaskDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/SetTextTaskDescription"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/LAbelStatus"

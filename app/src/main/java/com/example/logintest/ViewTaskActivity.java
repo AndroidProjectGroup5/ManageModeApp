@@ -11,7 +11,7 @@ import android.widget.TextView;
 public class ViewTaskActivity extends AppCompatActivity {
 
     TextView setAssignee ;
-    Button btn_addtask;
+    Button btn_back, btn_addtask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +20,7 @@ public class ViewTaskActivity extends AppCompatActivity {
 
         setAssignee = (TextView)findViewById(R.id.txtSetAssignee);
         btn_addtask = findViewById(R.id.btn_AddTask);
+        btn_back = findViewById(R.id.btnBackViewTask);
 
         setAssignee.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +36,13 @@ public class ViewTaskActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(ViewTaskActivity.this, AddTaskActivity.class));
             //    startActivity(intent);
+            }
+        });
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ViewTaskActivity.this, HomeActivity.class));
             }
         });
     }

@@ -17,7 +17,7 @@ public class ViewProjectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_project);
 
-        btn_back = findViewById(R.id.btnBack2);
+        btn_back = findViewById(R.id.btnBackViewProj);
         btn_viewTasks = findViewById(R.id.btn_vTasks);
 
         btn_viewTasks.setOnClickListener(new View.OnClickListener() {
