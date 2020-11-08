@@ -57,5 +57,6 @@
     <string name="txtSaveChangeStatus">Save</string>
     <string name="btnAddEmployee">Add Employee</string>
     <string name="btnCreateNewProject">Create New Project</string>
+    <string name="projectDueDate">Project Due Date:</string>
 
 </resources>
