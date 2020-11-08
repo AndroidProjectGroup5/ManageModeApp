@@ -12,6 +12,34 @@
         android:background="@color/managemode_blue"
         tools:context=".MarkAttendanceActivity">
 
+        <Button
+            android:id="@+id/btnSaveAttendance"
+            style="@style/ButtonStyle"
+            android:layout_width="226dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/btnSaveAttendance"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputClockOut" />
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="48dp"
+            android:text="@string/btnBack"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSaveAttendance" />
+
         <TextView
             android:id="@+id/txtMarkAttendance"
             android:layout_width="wrap_content"
@@ -45,16 +73,13 @@
             android:layout_width="250dp"
             android:layout_height="237dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="120dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.428"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtChooseEmp"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/txtChooseEmp" />
 
         <TextView
-            android:id="@+id/txtClockIn2"
+            android:id="@+id/txtClockOut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -81,11 +106,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/inputDateAttend" />
 
+        <TextView
+            android:id="@+id/txtAttendanceDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/txtDateAttendance"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.241"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
         <EditText
             android:id="@+id/inputDateAttend"
             android:layout_width="265dp"
             android:layout_height="45dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:autofillHints=""
             android:ems="10"
             android:hint="@string/hintDate"
@@ -93,7 +131,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.472"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+            app:layout_constraintTop_toBottomOf="@+id/txtAttendanceDate" />
 
         <EditText
             android:id="@+id/inputClockIn"
@@ -121,6 +159,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.46"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtClockIn2" />
+            app:layout_constraintTop_toBottomOf="@+id/txtClockOut" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

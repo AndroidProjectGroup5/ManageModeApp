@@ -7,6 +7,19 @@
     android:background="@color/managemode_blue"
     tools:context=".AddTaskActivity">
 
+    <Button
+        android:id="@+id/btnBackAddTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="105dp"
+        android:layout_marginBottom="56dp"
+        android:text="@string/btnBack"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSaveTask" />
+
     <TextView
         android:id="@+id/txtTaskTitle"
         android:layout_width="wrap_content"
@@ -17,7 +30,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintHorizontal_bias="0.289"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,7 +44,7 @@
         android:prompt="@string/Projecprompt"
         android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTaskTitle" />
 
@@ -49,36 +62,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtProjectGroup" />
 
-    <EditText
-        android:id="@+id/editTextTaskName"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.24"
-        app:layout_constraintStart_toEndOf="@+id/txtTaskName"
-        app:layout_constraintTop_toBottomOf="@+id/txtProjectGroup" />
-
-    <EditText
-        android:id="@+id/editTextTaskDescription"
-        android:layout_width="250sp"
-        android:layout_height="90sp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="@string/hintTaskDescription"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTaskName" />
-
     <Spinner
-        android:id="@+id/txtAssineeGroup"
+        android:id="@+id/txtAssigneeGroup"
         android:layout_width="250dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
@@ -87,7 +72,7 @@
         android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTaskDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/inputTaskDescription" />
 
     <Spinner
         android:id="@+id/txtStatusGroup"
@@ -100,16 +85,47 @@
         android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAssineeGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/txtAssigneeGroup" />
 
     <Button
-        android:id="@+id/btnAddTaskActivity"
+        android:id="@+id/btnSaveTask"
         style="@style/ButtonStyle"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/btnAddTask"
+        android:text="@string/btnSaveTask"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtStatusGroup" />
+
+    <EditText
+        android:id="@+id/inputTaskName"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="10dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/txtTaskName"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintStart_toEndOf="@+id/txtTaskName"
+        app:layout_constraintTop_toBottomOf="@+id/txtProjectGroup" />
+
+    <EditText
+        android:id="@+id/inputTaskDescription"
+        android:layout_width="250sp"
+        android:layout_height="90sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/hintTaskDescription"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputTaskName" />
 </androidx.constraintlayout.widget.ConstraintLayout>

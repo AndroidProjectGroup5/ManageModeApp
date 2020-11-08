@@ -17,7 +17,7 @@ public class CreateProjectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_project);
 
-        btn_back = findViewById(R.id.btnBack);
+        btn_back = findViewById(R.id.btnBackCreateProject);
         btn_create = findViewById(R.id.btnCreateProj);
 
 
