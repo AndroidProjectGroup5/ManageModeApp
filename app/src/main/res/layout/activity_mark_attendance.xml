@@ -12,21 +12,8 @@
         android:background="@color/managemode_blue"
         tools:context=".MarkAttendanceActivity">
 
-        <EditText
-            android:id="@+id/dateAttendance"
-            android:layout_width="265dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:ems="10"
-            android:hint="@string/inputDate"
-            android:inputType="date"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.472"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
-
         <TextView
-            android:id="@+id/txtProjectList"
+            android:id="@+id/txtMarkAttendance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -40,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txtProjectList2"
+            android:id="@+id/txtChooseEmp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -51,7 +38,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.254"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtProjectList" />
+            app:layout_constraintTop_toBottomOf="@+id/txtMarkAttendance" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -63,20 +50,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.428"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtProjectList2"
+            app:layout_constraintTop_toBottomOf="@+id/txtChooseEmp"
             app:layout_constraintVertical_bias="0.0" />
-
-        <EditText
-            android:id="@+id/editTextTime2"
-            android:layout_width="261dp"
-            android:layout_height="44dp"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:inputType="time"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.46"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtClockIn2" />
 
         <TextView
             android:id="@+id/txtClockIn2"
@@ -90,7 +65,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.231"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTime" />
+            app:layout_constraintTop_toBottomOf="@+id/inputClockIn" />
 
         <TextView
             android:id="@+id/txtClockIn"
@@ -104,18 +79,48 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.233"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dateAttendance" />
+            app:layout_constraintTop_toBottomOf="@+id/inputDateAttend" />
 
         <EditText
-            android:id="@+id/editTextTime"
+            android:id="@+id/inputDateAttend"
+            android:layout_width="265dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/hintDate"
+            android:inputType="date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.472"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+        <EditText
+            android:id="@+id/inputClockIn"
             android:layout_width="261dp"
             android:layout_height="44dp"
             android:layout_marginTop="8dp"
             android:ems="10"
+            android:hint="@string/hintClock"
             android:inputType="time"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.46"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtClockIn" />
+            app:layout_constraintTop_toBottomOf="@+id/txtClockIn"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/inputClockOut"
+            android:layout_width="261dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="8dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/hintClock"
+            android:inputType="time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.46"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtClockIn2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

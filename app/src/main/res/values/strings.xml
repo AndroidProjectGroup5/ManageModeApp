@@ -21,9 +21,11 @@
     <string name="projectTitle">Project Title</string>
     <string name="description">Description</string>
     <string name="inputDate">Enter Date</string>
+    <string name="hintDate">DD/MM/YYYY</string>
     <string name="projectsList">Projects List</string>
     <string name="clockIn">Clock In Time</string>
     <string name="clockOut">Clock Out Time</string>
+    <string name="hintClock">HH:MM</string>
     <string name="LogoDescription">App Logo</string>
     <string-array name="txtProjectNames">
         <item>Project 1</item>
