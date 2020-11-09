@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 public class CreateProjectActivity extends AppCompatActivity {
 
-    Button btn_create, btn_back;
+    Button btn_home, btn_create, btn_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,8 +18,8 @@ public class CreateProjectActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_project);
 
         btn_back = findViewById(R.id.btnBackCreateProject);
+        btn_home = findViewById(R.id.btnBackHomeCreateProject);
         btn_create = findViewById(R.id.btnCreateProj);
-
 
         btn_create.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,6 +29,13 @@ public class CreateProjectActivity extends AppCompatActivity {
         });
 
         btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CreateProjectActivity.this, ViewAllProjectsActivity.class));
+            }
+        });
+
+        btn_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(CreateProjectActivity.this, HomeActivity.class));

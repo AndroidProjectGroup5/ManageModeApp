@@ -59,5 +59,7 @@
     <string name="btnCreateNewProject">Create New Project</string>
     <string name="projectDueDate">Project Due Date:</string>
     <string name="btnSaveAttendance">Save Attendance</string>
+    <string name="btnHome">Home</string>
+    <string name="btnChangeTaskStatus">Save</string>
 
 </resources>

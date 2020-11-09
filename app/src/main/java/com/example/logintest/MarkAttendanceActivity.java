@@ -17,7 +17,7 @@ public class MarkAttendanceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mark_attendance);
 
-        btn_back = findViewById(R.id.btnBack);
+        btn_back = findViewById(R.id.btnBackHomeMarkAttend);
         btn_attend = findViewById(R.id.btnSaveAttendance);
 
 
