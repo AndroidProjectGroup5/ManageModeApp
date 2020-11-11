@@ -8,6 +8,23 @@
     android:background="@color/managemode_blue"
     tools:context=".AddEmployeeActivity">
 
+    <EditText
+        android:id="@+id/create_name"
+        android:layout_width="326dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="8dp"
+        android:autofillHints=""
+        android:backgroundTint="#FFFFFF"
+        android:ems="10"
+        android:hint="@string/et_name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.927"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAddEmployee" />
+
     <Button
         android:id="@+id/btnBackAddEmployee"
         android:layout_width="wrap_content"
@@ -79,8 +96,9 @@
         android:layout_width="326dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
+        android:autofillHints=""
         android:backgroundTint="#FFFFFF"
         android:ems="10"
         android:hint="@string/et_name"
@@ -88,7 +106,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.927"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAddEmployee"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/create_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
