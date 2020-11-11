@@ -27,13 +27,6 @@ public class ViewEmployeeActivity extends AppCompatActivity {
             }
         });
 
-        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ViewEmployeeActivity.this, HomeActivity.class));
-            }
-        });
-
         btn_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
