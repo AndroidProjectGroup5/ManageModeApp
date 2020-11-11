@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class AddEmployeeActivity extends AppCompatActivity {
 
     //############ Declaring attributes ############//
-    EditText create_username, create_password;
+    EditText create_name, create_username, create_password;
     Button btn_home, btn_back, btnCreate;
 
     @Override
@@ -20,6 +20,7 @@ public class AddEmployeeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addemployee);
 
+        create_name = findViewById(R.id.create_name);
         create_username = findViewById(R.id.create_username);
         create_password = findViewById(R.id.create_password);
         btnCreate = findViewById(R.id.btnCreate);
@@ -29,9 +30,23 @@ public class AddEmployeeActivity extends AppCompatActivity {
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String usernameValue = create_username.getText().toString();
-                String passwordValue = create_password.getText().toString();
-                Toast.makeText(AddEmployeeActivity.this, "Employee was successfully created!", Toast.LENGTH_SHORT).show();
+                Employee emp = new Employee();
+
+                emp.seteName(create_name.getText().toString());
+                emp.seteUsername(create_username.getText().toString());
+                emp.setePassword(create_password.getText().toString());
+
+                try{
+                    Toast.makeText(AddEmployeeActivity.this, emp.toString(), Toast.LENGTH_SHORT).show();
+
+                }catch (Exception e) {
+                    Toast.makeText(AddEmployeeActivity.this, "Error creating the employee", Toast.LENGTH_SHORT).show();
+                    emp = new Employee("error, ", "error", "error");
+                }
+
+                DatabaseHelper databaseHelper = new DatabaseHelper(AddEmployeeActivity.this);
+                Boolean sucess = databaseHelper.addUser(emp);
+                Toast.makeText(AddEmployeeActivity.this, "Success = " + sucess, Toast.LENGTH_SHORT).show();
             }
         });
 

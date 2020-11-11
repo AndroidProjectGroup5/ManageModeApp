@@ -10,22 +10,56 @@ import androidx.annotation.Nullable;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    static String name = "database";
+    static String name = "database21";
     static int version = 1;
 
     //################# SQL codes #####################//
-    String createTable = "CREATE TABLE if not exists 'user' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'username' TEXT NOT NULL, 'password' TEXT NOT NULL)";
-    String sql = "INSERT INTO user (username, password) SELECT 'admin', 'admin' WHERE NOT EXISTS (SELECT 1 FROM user WHERE username ='admin' AND password ='admin')";
-
+    //String createTable = "CREATE TABLE if not exists 'user' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'username' VARCHAR NOT NULL, 'password' VARCHAR NOT NULL, 'isAdmin' BOOL)";
+    String user = "CREATE TABLE if not exists 'user' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            "'EmployeeName' VARCHAR NOT NULL, " +
+            "'username' VARCHAR NOT NULL," +
+            " 'password' VARCHAR NOT NULL)";
 
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, name, null, version);
-    // creates the table if it doesn't exists
-        getWritableDatabase().execSQL(createTable);
-    // creates an standard admin account if it doesn't exists.
-        getWritableDatabase().execSQL(sql);
     }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL(user);
+        fillEmployees(db);
+    }
+
+    public void fillEmployees(SQLiteDatabase db) {
+        String insertUsers = "INSERT INTO user (EmployeeName, username, password) VALUES (" +
+                "'admin', 'admin', 'admin'), " +
+                "('Danilo Andrade', 'danilo', 'dan12')," +
+                "('Andrea Cruz', 'andrea', 'andrea34')," +
+                "('Jaimish Patel', 'jaimish', 'jaimish56')," +
+                "('Suzuka Natsuhara', 'suzuka', 'suzuka78')," +
+                "('John Mathew', 'johnmathew', 'john000')";
+        db.execSQL(insertUsers);
+    }
+
+
+    public boolean addUser (Employee emp) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("EmployeeName", emp.geteName());
+        cv.put("username", emp.geteUsername());
+        cv.put("password", emp.getePassword());
+        //cv.put("isAdmin", emp.getAdmin());
+
+        long insert = db.insert("user", null, cv);
+        if(insert == -1){
+            return false;
+        }else {
+            return true;
+        }
+
+    }
+
 
     public void insertUsers(ContentValues contentValues){
         getWritableDatabase().insert("user","", contentValues);
@@ -47,13 +81,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    @Override
-    public void onCreate(SQLiteDatabase db) {
 
-    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
 }
+
+/*    String status = "CREATE TABLE 'Status' ('StatusID' INTEGER NOT NULL," +
+            "'Name' TEXT NOT NULL PRIMARY KEY('StatusID'));";
+
+    /*String project = "CREATE TABLE 'Project' ('ProjectID' INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            "'MemberID' INTEGER NOT NULL, " +
+            "'ProjectName' TEXT NOT NULL, " +
+            "'Description' TEXT, " +
+            " FOREIGN KEY('MemberID') REFERENCES 'users'('id') ON DELETE CASCADE ON UPDATE CASCADE);";
+
+    String task = "CREATE TABLE 'task' ('TaskID' INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "'ProjectID' INTEGER NOT NULL," +
+            "'EmployeeID' INTEGER NOT NULL," +
+            "'StatusID' INTEGER," +
+            "'TaskName' TEXT NOT NULL," +
+            "'TaskDescription' TEXT NOT NULL," +
+            "FOREIGN KEY('ProjectID') REFERENCES 'Project'('ProjectID'));";
+
+    String attendance = "CREATE TABLE 'attendance' ("+
+            "'EmployeeID'	INTEGER NOT NULL," +
+            "'Date'	NUMERIC NOT NULL," +
+            "'Status'	BLOB NOT NULL," +
+            "FOREIGN KEY('EmployeeID') REFERENCES 'users'('id') ON DELETE CASCADE ON UPDATE CASCADE);";*/
