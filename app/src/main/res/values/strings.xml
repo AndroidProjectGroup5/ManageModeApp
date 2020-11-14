@@ -32,7 +32,7 @@
         <item>Project 2</item>
         <item>Project 3</item>
     </string-array>
-    <string-array name="txtStatues">
+    <string-array name="txtStatus">
         <item>Not started</item>
         <item>On going</item>
         <item>Finished</item>

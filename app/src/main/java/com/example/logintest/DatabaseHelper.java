@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -13,6 +14,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static String name = "database21";
     static int version = 1;
 
+    private static final String TAG = DatabaseHelper.class.getSimpleName();
+    public DatabaseHelper(@Nullable Context context) {
+        super(context, name, null, version);
+    }
+
     //################# SQL codes #####################//
     //String createTable = "CREATE TABLE if not exists 'user' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'username' VARCHAR NOT NULL, 'password' VARCHAR NOT NULL, 'isAdmin' BOOL)";
     String user = "CREATE TABLE if not exists 'user' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -20,15 +26,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "'username' VARCHAR NOT NULL," +
             " 'password' VARCHAR NOT NULL)";
 
-
-    public DatabaseHelper(@Nullable Context context) {
-        super(context, name, null, version);
-    }
+    String task = "CREATE TABLE if not exists 'task' ('task_id' INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            "'TaskName' VARCHAR NOT NULL, " +
+            "'TaskDescription' VARCHAR NOT NULL," +
+            "'TaskAssignee' VARCHAR NOT NULL," +
+            " 'TaskStatus' VARCHAR NOT NULL)";
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(user);
         fillEmployees(db);
+        db.execSQL(task); // right way would be to check if table exists first, this just simplifies
+        fillTasks(db);
     }
 
     public void fillEmployees(SQLiteDatabase db) {
@@ -42,6 +51,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(insertUsers);
     }
 
+    private void fillTasks(SQLiteDatabase db) {
+        String insertTasks = "INSERT INTO task (TaskName, TaskDescription, TaskAssignee, TaskStatus) VALUES (" +
+                "'Cleaning', 'Clean the premises after the workday is over.', 'Joe', 'Completed'), " +
+                "('Security check', 'Check if visitors are authorized', 'Michael', 'Ongoing')," +
+                "('Locking down', 'Locking the facilities', 'Mary', 'Not started')";
+        db.execSQL(insertTasks);
+    }
 
     public boolean addUser (Employee emp) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -60,11 +76,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public boolean addTask (Task tsk) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("TaskName", tsk.gettName());
+        cv.put("TaskDescription", tsk.gettDescription());
+        cv.put("TaskAssignee", tsk.gettAssignee());
+        cv.put("TaskStatus", tsk.gettStatus());
+
+        long insert = db.insert("task", null, cv);
+        if(insert == -1){
+            return false;
+        }else {
+            return true;
+        }
+
+    }
 
     public void insertUsers(ContentValues contentValues){
         getWritableDatabase().insert("user","", contentValues);
     }
 
+    public void insertTasks(ContentValues contentValues){
+        getWritableDatabase().insert("task","", contentValues);
+    }
 
     // checks to see if the arguments matches any record in the table
     public boolean isLoginValid(String username, String password){
@@ -84,8 +119,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+        Log.w(DatabaseHelper.class.getName(),
+                "Upgrading database from version " + i + " to "
+                        + i1 + ", which will destroy all old data");
+        db.execSQL("DROP TABLE IF EXISTS 'user'");
+        db.execSQL("DROP TABLE IF EXISTS 'task'");
+        onCreate(db);
     }
 }
 

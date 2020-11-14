@@ -18,25 +18,14 @@ public class ViewTaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_task);
 
-        setAssignee = (TextView)findViewById(R.id.txtSetAssignee);
         btn_addtask = findViewById(R.id.btn_AddTask);
         btn_back = findViewById(R.id.btnBackViewTask);
         btn_home = findViewById(R.id.btnBackHomeViewTask);
-
-        setAssignee.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ViewTaskActivity.this, ChangeTaskActivity.class);
-                startActivity(intent);
-            }
-        });
-
 
         btn_addtask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ViewTaskActivity.this, AddTaskActivity.class));
-            //    startActivity(intent);
             }
         });
 

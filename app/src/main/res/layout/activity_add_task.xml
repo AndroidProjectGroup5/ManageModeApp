@@ -31,6 +31,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSaveTask" />
 
+    <Button
+        android:id="@+id/btnSaveTask"
+        style="@style/ButtonStyle"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/btnSaveTask"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtStatusGroup" />
+
     <TextView
         android:id="@+id/txtTaskTitle"
         android:layout_width="wrap_content"
@@ -45,43 +57,61 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/txtProjectGroup"
-        android:layout_width="250dp"
-        android:layout_height="40sp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:entries="@array/txtProjectNames"
-        android:prompt="@string/Projecprompt"
-        android:spinnerMode="dialog"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTaskTitle" />
-
     <TextView
         android:id="@+id/txtTaskName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:text="@string/txtTaskName"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintHorizontal_bias="0.238"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtProjectGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/txtTaskTitle" />
+
+    <EditText
+        android:id="@+id/inputTaskName"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="14dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/txtTaskName"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintStart_toEndOf="@+id/txtTaskName"
+        app:layout_constraintTop_toBottomOf="@+id/txtTaskTitle" />
+
+    <EditText
+        android:id="@+id/inputTaskDescription"
+        android:layout_width="250sp"
+        android:layout_height="90sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/hintTaskDescription"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputTaskName" />
 
     <Spinner
         android:id="@+id/txtAssigneeGroup"
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:entries="@array/txtEmployee"
         android:prompt="@string/promptAssignee"
         android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputTaskDescription" />
 
@@ -90,53 +120,13 @@
         android:layout_width="250dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:entries="@array/txtStatues"
+        android:layout_marginTop="16dp"
+        android:entries="@array/txtStatus"
         android:prompt="@string/Statusprompt"
-        android:spinnerMode="dialog"
+        android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAssigneeGroup" />
 
-    <Button
-        android:id="@+id/btnSaveTask"
-        style="@style/ButtonStyle"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/btnSaveTask"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtStatusGroup" />
-
-    <EditText
-        android:id="@+id/inputTaskName"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="10dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/txtTaskName"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.24"
-        app:layout_constraintStart_toEndOf="@+id/txtTaskName"
-        app:layout_constraintTop_toBottomOf="@+id/txtProjectGroup" />
-
-    <EditText
-        android:id="@+id/inputTaskDescription"
-        android:layout_width="250sp"
-        android:layout_height="90sp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="@string/hintTaskDescription"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputTaskName" />
 </androidx.constraintlayout.widget.ConstraintLayout>
