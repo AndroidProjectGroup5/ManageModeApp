@@ -8,6 +8,19 @@
     android:background="@color/managemode_blue"
     tools:context=".ViewTaskActivity">
 
+    <Spinner
+        android:id="@+id/txtStatusGroup_viewTask"
+        android:layout_width="157dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="20dp"
+        android:entries="@array/txtStatus"
+        android:prompt="@string/Statusprompt"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.889"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine3" />
+
     <Button
         android:id="@+id/btnBackHomeViewTask"
         android:layout_width="wrap_content"
@@ -36,7 +49,6 @@
 
     <Button
         android:id="@+id/btn_AddTask"
-        style="@style/ButtonStyle"
         android:layout_width="226dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
@@ -159,6 +171,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="9dp"
         android:layout_marginTop="15dp"
+        android:autofillHints=""
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
@@ -166,8 +179,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.86"
         app:layout_constraintStart_toEndOf="@+id/txtAssignee"
-        app:layout_constraintTop_toBottomOf="@+id/SetTextTaskDescription"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/SetTextTaskDescription" />
 
     <TextView
         android:id="@+id/LAbelStatus"
@@ -180,19 +192,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine3" />
-
-    <TextView
-        android:id="@+id/txtSetAssignee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:text="Not Started"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.31"
-        app:layout_constraintStart_toEndOf="@+id/LAbelStatus"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

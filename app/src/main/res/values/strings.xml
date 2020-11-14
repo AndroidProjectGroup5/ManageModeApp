@@ -26,7 +26,8 @@
     <string name="clockIn">Clock In Time</string>
     <string name="clockOut">Clock Out Time</string>
     <string name="hintClock">HH:MM</string>
-    <string name="btnDatepicker">SELECT DATE AND TIME</string>
+    <string name="btnDatepicker">SELECT DATE</string>
+    <string name="btnTimepicker">Click to set time</string>
     <string name="LogoDescription">App Logo</string>
     <string-array name="txtProjectNames">
         <item>Project 1</item>

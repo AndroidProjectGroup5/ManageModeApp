@@ -31,70 +31,27 @@
             android:layout_width="226dp"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="72dp"
             android:layout_marginEnd="16dp"
             android:text="@string/btnSaveAttendance"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintHorizontal_bias="0.437"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputClockOut" />
-
-        <EditText
-            android:id="@+id/inputDateAttend"
-            android:layout_width="265dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="128dp"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="@string/hintDate"
-            android:inputType="date"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.438"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtAttendanceDate" />
-
-        <TextView
-            android:id="@+id/txtClockOut"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/clockOut"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.212"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputClockIn" />
-
-        <EditText
-            android:id="@+id/inputClockIn"
-            android:layout_width="261dp"
-            android:layout_height="44dp"
-            android:layout_marginTop="4dp"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="@string/hintClock"
-            android:inputType="time"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.426"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtClockIn" />
+            app:layout_constraintTop_toBottomOf="@+id/txtClockOut" />
 
         <EditText
             android:id="@+id/inputClockOut"
-            android:layout_width="261dp"
-            android:layout_height="44dp"
-            android:layout_marginTop="4dp"
+            android:layout_width="108dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="75dp"
             android:autofillHints=""
             android:ems="10"
             android:hint="@string/hintClock"
             android:inputType="time"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.426"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtClockOut" />
+            app:layout_constraintTop_toBottomOf="@+id/inputClockIn" />
 
         <TextView
             android:id="@+id/txtClockIn"
@@ -106,9 +63,36 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.201"
+            app:layout_constraintHorizontal_bias="0.212"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputDateAttend" />
+            app:layout_constraintTop_toBottomOf="@+id/txtAttend" />
+
+        <TextView
+            android:id="@+id/txtClockOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/clockOut"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.224"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputClockIn" />
+
+        <EditText
+            android:id="@+id/inputClockIn"
+            android:layout_width="108dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="75dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/hintClock"
+            android:inputType="time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtAttend" />
 
         <Button
             android:id="@+id/btnBackHomeMarkAttend"
@@ -122,6 +106,16 @@
             app:layout_constraintHorizontal_bias="0.95"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnSaveAttendance" />
+
+        <Button
+            android:id="@+id/btnSetDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/btnDatepicker"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtAttendanceDate" />
 
         <TextView
             android:id="@+id/txtMarkAttendance"
@@ -156,7 +150,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:text="@string/txtDateAttendance"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -165,18 +159,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtAssigneeGroup2" />
 
-        <Button
-            android:id="@+id/btnSetDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/btnDatepicker"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtAttendanceDate" />
-
         <TextView
-            android:id="@+id/txtDateTimeAttend"
+            android:id="@+id/txtAttend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="17dp"
