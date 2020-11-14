@@ -12,26 +12,109 @@
         android:background="@color/managemode_blue"
         tools:context=".MarkAttendanceActivity">
 
+        <Spinner
+            android:id="@+id/txtAssigneeGroup2"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:entries="@array/txtEmployee"
+            android:prompt="@string/promptAssignee"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.409"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtChooseEmp" />
+
         <Button
             android:id="@+id/btnSaveAttendance"
             style="@style/ButtonStyle"
             android:layout_width="226dp"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="16dp"
             android:text="@string/btnSaveAttendance"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintHorizontal_bias="0.483"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/inputClockOut" />
+
+        <EditText
+            android:id="@+id/inputDateAttend"
+            android:layout_width="265dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="128dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/hintDate"
+            android:inputType="date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.438"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtAttendanceDate" />
+
+        <TextView
+            android:id="@+id/txtClockOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/clockOut"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.212"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputClockIn" />
+
+        <EditText
+            android:id="@+id/inputClockIn"
+            android:layout_width="261dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="4dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/hintClock"
+            android:inputType="time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.426"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtClockIn" />
+
+        <EditText
+            android:id="@+id/inputClockOut"
+            android:layout_width="261dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="4dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/hintClock"
+            android:inputType="time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.426"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtClockOut" />
+
+        <TextView
+            android:id="@+id/txtClockIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/clockIn"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.201"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputDateAttend" />
 
         <Button
             android:id="@+id/btnBackHomeMarkAttend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="64dp"
             android:layout_marginBottom="72dp"
             android:text="@string/btnHome"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -68,97 +151,39 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtMarkAttendance" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="248dp"
-            android:layout_height="83dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.428"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtChooseEmp" />
-
-        <TextView
-            android:id="@+id/txtClockOut"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/clockOut"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.231"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputClockIn" />
-
-        <TextView
-            android:id="@+id/txtClockIn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/clockIn"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.233"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputDateAttend" />
-
         <TextView
             android:id="@+id/txtAttendanceDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:text="@string/txtDateAttendance"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.22"
+            app:layout_constraintHorizontal_bias="0.277"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+            app:layout_constraintTop_toBottomOf="@+id/txtAssigneeGroup2" />
 
-        <EditText
-            android:id="@+id/inputDateAttend"
-            android:layout_width="265dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="20dp"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="@string/hintDate"
-            android:inputType="date"
+        <Button
+            android:id="@+id/btnSetDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/btnDatepicker"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.472"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtAttendanceDate" />
 
-        <EditText
-            android:id="@+id/inputClockIn"
-            android:layout_width="261dp"
-            android:layout_height="44dp"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:hint="@string/hintClock"
-            android:inputType="time"
+        <TextView
+            android:id="@+id/txtDateTimeAttend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.46"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtClockIn"
-            android:autofillHints="" />
+            app:layout_constraintTop_toBottomOf="@+id/btnSetDate" />
 
-        <EditText
-            android:id="@+id/inputClockOut"
-            android:layout_width="261dp"
-            android:layout_height="44dp"
-            android:layout_marginTop="8dp"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="@string/hintClock"
-            android:inputType="time"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.46"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtClockOut" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
