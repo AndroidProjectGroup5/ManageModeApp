@@ -136,19 +136,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 /*    String status = "CREATE TABLE 'Status' ('StatusID' INTEGER NOT NULL," +
             "'Name' TEXT NOT NULL PRIMARY KEY('StatusID'));";
 
-    /*String project = "CREATE TABLE 'Project' ('ProjectID' INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            "'MemberID' INTEGER NOT NULL, " +
-            "'ProjectName' TEXT NOT NULL, " +
-            "'Description' TEXT, " +
-            " FOREIGN KEY('MemberID') REFERENCES 'users'('id') ON DELETE CASCADE ON UPDATE CASCADE);";
-
     String task = "CREATE TABLE 'task' ('TaskID' INTEGER PRIMARY KEY AUTOINCREMENT," +
-            "'ProjectID' INTEGER NOT NULL," +
+            "'userID' INTEGER NOT NULL," +
             "'EmployeeID' INTEGER NOT NULL," +
             "'StatusID' INTEGER," +
             "'TaskName' TEXT NOT NULL," +
             "'TaskDescription' TEXT NOT NULL," +
-            "FOREIGN KEY('ProjectID') REFERENCES 'Project'('ProjectID'));";
+            "FOREIGN KEY('userID') REFERENCES 'user'('id'));";
 
     String attendance = "CREATE TABLE 'attendance' ("+
             "'EmployeeID'	INTEGER NOT NULL," +
