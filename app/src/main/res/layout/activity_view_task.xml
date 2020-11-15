@@ -66,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="76dp"
-        android:text="@string/txtViewTask"
+        android:text="INCORRECT SCREEN - VIEW TASK"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
