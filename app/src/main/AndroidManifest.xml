@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ManageModeTheme">
-        <activity android:name=".ChangeTaskActivity"></activity>
+        <activity android:name=".ChangeTaskActivity" />
         <activity android:name=".ViewTaskActivity" />
         <activity android:name=".ViewEmployeeActivity" />
         <activity android:name=".AddTaskActivity" />
@@ -21,9 +21,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".MarkAttendanceActivity" />
-        <activity android:name=".ViewAllProjectsActivity" />
-        <activity android:name=".CreateProjectActivity" />
-        <activity android:name=".ViewProjectActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".AddEmployeeActivity" />
         <activity android:name=".LoginActivity">
