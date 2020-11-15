@@ -20,6 +20,9 @@ public class ViewEmployeeActivity extends AppCompatActivity {
         btn_back = findViewById(R.id.btnBackHomeMarkAttend);
         btn_home = findViewById(R.id.btnBackHomeViewEmp);
 
+        // create EmployeeListAdapter and create recycler_view_employees resource layout
+        // insert code to access recycler view below
+
         btn_addEmp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -19,20 +19,15 @@ public class ViewTaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_task);
 
         btn_addtask = findViewById(R.id.btn_AddTask);
-        btn_back = findViewById(R.id.btnBackViewTask);
         btn_home = findViewById(R.id.btnBackHomeViewTask);
+
+        // create TaskListAdapter and create recycler_view_tasks resource layout
+        // insert code to access recycler view below
 
         btn_addtask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ViewTaskActivity.this, AddTaskActivity.class));
-            }
-        });
-
-        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ViewTaskActivity.this, HomeActivity.class));
             }
         });
 

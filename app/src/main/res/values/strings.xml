@@ -4,7 +4,6 @@
     <string name="et_password">Password</string>
     <string name="et_name">Name</string>
     <string name="create_password">Type the new password</string>
-    <string name="create_project">Create Project</string>
     <string name="btnLogin">LOGIN</string>
     <string name="btnRegister">REGISTER</string>
     <string name="btnCreate">CREATE</string>
@@ -14,26 +13,17 @@
     <string name="viewAttendance">View Attendance</string>
     <string name="viewEmployee">View Employees</string>
     <string name="viewTasks">View Tasks</string>
-    <string name="viewProjects">View Projects</string>
-    <string name="viewProject">View Project</string>
     <string name="chooseEmployee">Choose Employee</string>
     <string name="markAttendance">Mark Attendance</string>
-    <string name="projectTitle">Project Title</string>
     <string name="description">Description</string>
     <string name="txtDateAttendance">Select Date and Time</string>
     <string name="hintDate">DD/MM/YYYY</string>
-    <string name="projectsList">Projects List</string>
     <string name="clockIn">Clock In Time</string>
     <string name="clockOut">Clock Out Time</string>
     <string name="hintClock">HH:MM</string>
     <string name="btnDatepicker">SELECT DATE</string>
     <string name="btnTimepicker">Click to set time</string>
     <string name="LogoDescription">App Logo</string>
-    <string-array name="txtProjectNames">
-        <item>Project 1</item>
-        <item>Project 2</item>
-        <item>Project 3</item>
-    </string-array>
     <string-array name="txtStatus">
         <item>Not started</item>
         <item>On going</item>
@@ -44,22 +34,18 @@
         <item>Employee 2</item>
         <item>Employee 3</item>
     </string-array>
-    <string name="Projecprompt">Select Project</string>
     <string name="Statusprompt">Select Status</string>
     <string name="txtTaskName">Task Name</string>
     <string name="hintTaskDescription">Task Description</string>
     <string name="btnSaveTask">Save Task</string>
     <string name="promptAssignee">Select Employee</string>
-    <string name="employeeList">Employee List</string>
-    <string name="txtViewTask">View Task</string>
-    <string name="txtProjectName">Project Name</string>
+    <string name="employeeList">Employees List</string>
+    <string name="TaskList">Tasks List</string>
     <string name="txtAssignee">Assignee</string>
     <string name="txtViewTaskStatus">Status</string>
     <string name="txtChangeStatus">Change Status</string>
     <string name="txtSaveChangeStatus">Save</string>
     <string name="btn_addEmployee">Add Employee</string>
-    <string name="btnCreateNewProject">Create New Project</string>
-    <string name="projectDueDate">Project Due Date:</string>
     <string name="btnSaveAttendance">Save Attendance</string>
     <string name="btnHome">Home</string>
     <string name="btnChangeTaskStatus">Save</string>

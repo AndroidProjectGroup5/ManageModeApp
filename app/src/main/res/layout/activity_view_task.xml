@@ -8,19 +8,6 @@
     android:background="@color/managemode_blue"
     tools:context=".ViewTaskActivity">
 
-    <Spinner
-        android:id="@+id/txtStatusGroup_viewTask"
-        android:layout_width="157dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="20dp"
-        android:entries="@array/txtStatus"
-        android:prompt="@string/Statusprompt"
-        android:spinnerMode="dropdown"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.889"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine3" />
-
     <Button
         android:id="@+id/btnBackHomeViewTask"
         android:layout_width="wrap_content"
@@ -35,30 +22,18 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_AddTask" />
 
     <Button
-        android:id="@+id/btnBackViewTask"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="168dp"
-        android:layout_marginBottom="72dp"
-        android:text="@string/btnBack"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.974"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_AddTask" />
-
-    <Button
         android:id="@+id/btn_AddTask"
-        android:layout_width="226dp"
-        android:layout_height="50dp"
+        style="@style/ButtonStyle"
+        android:layout_width="190dp"
+        android:layout_height="40dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:text="@string/addTask"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LAbelStatus" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewTasks" />
 
     <TextView
         android:id="@+id/txtViewTask"
@@ -66,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="76dp"
-        android:text="@string/txtViewTask"
+        android:text="@string/TaskList"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,123 +50,39 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtProjectName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/txtProjectName"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.22"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtViewTask" />
-
-    <TextView
         android:id="@+id/txtSetProjectName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
-        app:layout_constraintStart_toEndOf="@+id/txtProjectName"
         app:layout_constraintTop_toBottomOf="@+id/txtViewTask" />
 
     <TextView
-        android:id="@+id/txtShowTaskName"
+        android:id="@+id/txtTaskNameinList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
-        android:text="@string/txtTaskName"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.21"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtProjectName" />
+        app:layout_constraintTop_toBottomOf="@+id/txtViewTask" />
 
     <TextView
-        android:id="@+id/txtSetTaskName"
+        android:id="@+id/txtTaskDescrInList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.22"
-        app:layout_constraintStart_toEndOf="@+id/txtShowTaskName"
-        app:layout_constraintTop_toBottomOf="@+id/txtProjectName" />
+        app:layout_constraintTop_toBottomOf="@+id/txtTaskNameinList" />
 
-    <TextView
-        android:id="@+id/txtTaskDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewTasks"
+        android:layout_width="269dp"
+        android:layout_height="202dp"
         android:layout_marginTop="20dp"
-        android:text="@string/hintTaskDescription"
-        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtShowTaskName" />
-
-    <EditText
-        android:id="@+id/SetTextTaskDescription"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtTaskDescription"
-        app:layout_constraintTop_toBottomOf="@+id/txtSetTaskName"
-        android:autofillHints="" />
-
-    <TextView
-        android:id="@+id/txtAssignee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/txtAssignee"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.21"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SetTextTaskDescription" />
-
-    <EditText
-        android:id="@+id/editTextTextMultiLine3"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="15dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.86"
-        app:layout_constraintStart_toEndOf="@+id/txtAssignee"
-        app:layout_constraintTop_toBottomOf="@+id/SetTextTaskDescription" />
-
-    <TextView
-        android:id="@+id/LAbelStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/txtViewTaskStatus"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine3" />
+        app:layout_constraintTop_toBottomOf="@+id/txtViewTask" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
