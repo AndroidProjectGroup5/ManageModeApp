@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    static String name = "database21";
+    static String name = "managemod";
     static int version = 1;
 
     private static final String TAG = DatabaseHelper.class.getSimpleName();
@@ -26,6 +26,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "'username' VARCHAR NOT NULL," +
             " 'password' VARCHAR NOT NULL)";
 
+    /*
+    * Put a new foreign key pointing to employee id
+    * query for that id to find username
+    * */
     String task = "CREATE TABLE if not exists 'task' ('task_id' INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "'TaskName' VARCHAR NOT NULL, " +
             "'TaskDescription' VARCHAR NOT NULL," +
@@ -35,8 +39,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(user);
-        fillEmployees(db);
         db.execSQL(task); // right way would be to check if table exists first, this just simplifies
+        fillEmployees(db);
         fillTasks(db);
     }
 
@@ -50,6 +54,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "('John Mathew', 'johnmathew', 'john000')";
         db.execSQL(insertUsers);
     }
+
 
     private void fillTasks(SQLiteDatabase db) {
         String insertTasks = "INSERT INTO task (TaskName, TaskDescription, TaskAssignee, TaskStatus) VALUES (" +
@@ -73,7 +78,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }else {
             return true;
         }
-
     }
 
     public boolean addTask (Task tsk) {
@@ -132,19 +136,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 /*    String status = "CREATE TABLE 'Status' ('StatusID' INTEGER NOT NULL," +
             "'Name' TEXT NOT NULL PRIMARY KEY('StatusID'));";
 
-    /*String project = "CREATE TABLE 'Project' ('ProjectID' INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            "'MemberID' INTEGER NOT NULL, " +
-            "'ProjectName' TEXT NOT NULL, " +
-            "'Description' TEXT, " +
-            " FOREIGN KEY('MemberID') REFERENCES 'users'('id') ON DELETE CASCADE ON UPDATE CASCADE);";
-
     String task = "CREATE TABLE 'task' ('TaskID' INTEGER PRIMARY KEY AUTOINCREMENT," +
-            "'ProjectID' INTEGER NOT NULL," +
+            "'userID' INTEGER NOT NULL," +
             "'EmployeeID' INTEGER NOT NULL," +
             "'StatusID' INTEGER," +
             "'TaskName' TEXT NOT NULL," +
             "'TaskDescription' TEXT NOT NULL," +
-            "FOREIGN KEY('ProjectID') REFERENCES 'Project'('ProjectID'));";
+            "FOREIGN KEY('userID') REFERENCES 'user'('id'));";
 
     String attendance = "CREATE TABLE 'attendance' ("+
             "'EmployeeID'	INTEGER NOT NULL," +
