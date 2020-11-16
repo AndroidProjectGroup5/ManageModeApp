@@ -37,24 +37,6 @@ public class MarkAttendanceActivity extends AppCompatActivity {
         }
     }; // event listener after user select a date from calendar
 
-    /*TimePickerDialog.OnTimeSetListener tIn = new TimePickerDialog.OnTimeSetListener() {
-        @Override
-        public void onTimeSet(TimePicker timePicker, int h, int m) {
-            c.set(Calendar.HOUR_OF_DAY, h);
-            c.set(Calendar.MINUTE, m);
-            clockIn.setText("ClockIn: " + fmtTime.format(c.getTime()));
-        }
-    };
-
-    TimePickerDialog.OnTimeSetListener tOut = new TimePickerDialog.OnTimeSetListener() {
-        @Override
-        public void onTimeSet(TimePicker timePicker, int h1, int m1) {
-            c.set(Calendar.HOUR_OF_DAY, h1);
-            c.set(Calendar.MINUTE, m1);
-            clockOut.setText("ClockOut: " + fmtTime.format(c.getTime()));
-        }
-    };*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,13 +95,33 @@ public class MarkAttendanceActivity extends AppCompatActivity {
 
         btn_back = findViewById(R.id.btnBackHomeMarkAttend);
         btn_attend = findViewById(R.id.btnSaveAttendance);
+        int selectedEmp = R.id.txtAssigneeGroup2;
 
         btn_attend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MarkAttendanceActivity.this, "Attendance Saved!", Toast.LENGTH_SHORT).show();
+                Attendance att = new Attendance();
+                Employee emp = new Employee();
+
+                emp.seteName(Integer.toString(selectedEmp));
+                att.setAttDate(attendance.getText().toString());
+                att.setaClockIn(clockIn.getText().toString());
+                att.setaClockOut(clockOut.getText().toString());
+
+                try{
+                    Toast.makeText(MarkAttendanceActivity.this, emp.toString(), Toast.LENGTH_SHORT).show();
+
+                }catch (Exception e) {
+                    Toast.makeText(MarkAttendanceActivity.this, "Error creating the attendance object", Toast.LENGTH_SHORT).show();
+                    att = new Attendance("error, ", "error", "error", "error");
+                }
+
+                DatabaseHelper databaseHelper = new DatabaseHelper(MarkAttendanceActivity.this);
+                Boolean success = databaseHelper.saveAttendance(att);
+                Toast.makeText(MarkAttendanceActivity.this, "Success = " + success, Toast.LENGTH_SHORT).show();
             }
         });
+
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
