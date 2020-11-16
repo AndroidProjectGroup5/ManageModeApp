@@ -1,10 +1,12 @@
 package com.example.logintest;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,19 +15,17 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import java.sql.Time;
 import java.text.DateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class MarkAttendanceActivity extends AppCompatActivity {
 
     Button btn_attend, btn_back;
-    private TextView attendance, clockInOut;
+    private TextView attendance, clockIn, clockOut;
 
     Calendar c = Calendar.getInstance(); // gets the date
     DateFormat fmtDate = DateFormat.getDateInstance(); // format the date displayed in the app
-    DateFormat fmtTime = DateFormat.getTimeInstance(); // format the date displayed in the app
 
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         @Override
@@ -37,24 +37,40 @@ public class MarkAttendanceActivity extends AppCompatActivity {
         }
     }; // event listener after user select a date from calendar
 
-    TimePickerDialog.OnTimeSetListener t = new TimePickerDialog.OnTimeSetListener() {
+    /*TimePickerDialog.OnTimeSetListener tIn = new TimePickerDialog.OnTimeSetListener() {
         @Override
-        public void onTimeSet(TimePicker timePicker, int h, int h1) {
+        public void onTimeSet(TimePicker timePicker, int h, int m) {
             c.set(Calendar.HOUR_OF_DAY, h);
-            c.set(Calendar.MINUTE, h1);
-            clockInOut.setText("ClockIn: " + fmtTime.format(c.getTime()));
+            c.set(Calendar.MINUTE, m);
+            clockIn.setText("ClockIn: " + fmtTime.format(c.getTime()));
         }
     };
+
+    TimePickerDialog.OnTimeSetListener tOut = new TimePickerDialog.OnTimeSetListener() {
+        @Override
+        public void onTimeSet(TimePicker timePicker, int h1, int m1) {
+            c.set(Calendar.HOUR_OF_DAY, h1);
+            c.set(Calendar.MINUTE, m1);
+            clockOut.setText("ClockOut: " + fmtTime.format(c.getTime()));
+        }
+    };*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mark_attendance);
 
-        attendance = (TextView) findViewById(R.id.txtAttend);
-        Button button = (Button) findViewById(R.id.btnSetDate);
+        attendance = findViewById(R.id.txtAttendDateResult);
+        clockIn = findViewById(R.id.txtClockInResult);
+        clockOut = findViewById(R.id.txtClockOutResult);
+
+        Button button = findViewById(R.id.btnSetDate);
+        Button buttoncIn = findViewById(R.id.btnSetClockIn);
+        Button buttoncOut = findViewById(R.id.btnSetClockOut);
 
         button.setOnClickListener(new View.OnClickListener() {
+            //String datePicker;
+
             @Override
             public void onClick(View v) {
                 new DatePickerDialog(MarkAttendanceActivity.this,
@@ -63,12 +79,36 @@ public class MarkAttendanceActivity extends AppCompatActivity {
                         c.get(Calendar.MONTH),
                         c.get(Calendar.DAY_OF_MONTH)).show();
             }
-            //public void onClick(View v) {
-            //    new TimePickerDialog(MarkAttendanceActivity.this,
-            //            t,
-            //            c.get(Calendar.HOUR_OF_DAY),
-            //            c.get(Calendar.MINUTE)).show();
-            //}
+        });
+
+        buttoncIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int hours = c.get(Calendar.HOUR_OF_DAY);
+                int minutes = c.get(Calendar.MINUTE);
+                new TimePickerDialog(MarkAttendanceActivity.this,
+                        new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker tp, int hour, int minute) {
+                                clockIn.setText(hour + ":" + minute);
+                            }
+                        }, hours, minutes, true).show();
+            }
+        });
+
+        buttoncOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int hours = c.get(Calendar.HOUR_OF_DAY);
+                int minutes = c.get(Calendar.MINUTE);
+                new TimePickerDialog(MarkAttendanceActivity.this,
+                        new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker tp, int hour, int minute) {
+                                clockOut.setText(hour + ":" + minute);
+                            }
+                        }, hours, minutes, true).show();
+            }
         });
 
         btn_back = findViewById(R.id.btnBackHomeMarkAttend);

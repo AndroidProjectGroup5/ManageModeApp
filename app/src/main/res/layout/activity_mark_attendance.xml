@@ -38,7 +38,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtAttend3" />
+            app:layout_constraintTop_toBottomOf="@+id/txtClockOutResult" />
 
         <Button
             android:id="@+id/btnBackHomeMarkAttend"
@@ -49,7 +49,7 @@
             android:text="@string/btnHome"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.944"
+            app:layout_constraintHorizontal_bias="0.077"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnSaveAttendance"
             app:layout_constraintVertical_bias="0.0" />
@@ -73,7 +73,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtAttend" />
+            app:layout_constraintTop_toBottomOf="@+id/txtAttendDateResult" />
 
         <Button
             android:id="@+id/btnSetClockOut"
@@ -84,7 +84,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.517"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtAttend2" />
+            app:layout_constraintTop_toBottomOf="@+id/txtClockInResult" />
 
         <TextView
             android:id="@+id/txtMarkAttendance"
@@ -129,7 +129,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txtAssigneeGroup2" />
 
         <TextView
-            android:id="@+id/txtAttend"
+            android:id="@+id/txtAttendDateResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -139,7 +139,7 @@
             app:layout_constraintTop_toBottomOf="@+id/btnSetDate" />
 
         <TextView
-            android:id="@+id/txtAttend2"
+            android:id="@+id/txtClockInResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -150,7 +150,7 @@
             app:layout_constraintTop_toBottomOf="@+id/btnSetClockIn" />
 
         <TextView
-            android:id="@+id/txtAttend3"
+            android:id="@+id/txtClockOutResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
