@@ -37,7 +37,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "'TaskAssignee' VARCHAR NOT NULL," +
             " 'TaskStatus' VARCHAR NOT NULL)";
 
-    /*
+
     String attendance = "CREATE TABLE 'attendance' ("+
             "'EmployeeID'	INTEGER NOT NULL," +
             "'EmployeeName'	VARCHAR NOT NULL," +
@@ -45,17 +45,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "'ClockIn'	TEXT NOT NULL," +
             "'ClockOut'	TEXT NOT NULL," +
             "FOREIGN KEY('EmployeeID') REFERENCES 'users'('id') ON DELETE CASCADE ON UPDATE CASCADE);";
-    */
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(user);
         db.execSQL(task); // right way would be to check if table exists first, this just simplifies
-        //db.execSQL(attendance); // right way would be to check if table exists first, this just simplifies
+        db.execSQL(attendance); // right way would be to check if table exists first, this just simplifies
 
         fillEmployees(db);
         fillTasks(db);
-        //fillAttendances(db);
+        fillAttendances(db);
     }
 
     public void fillEmployees(SQLiteDatabase db) {
@@ -77,7 +77,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(insertTasks);
     }
 
-    /*
     private void fillAttendances(SQLiteDatabase db) {
         String insertAttendances = "INSERT INTO attendance (EmployeeName, AttDate, ClockIn, ClockOut) VALUES (" +
                 "'Danilo Andrade', '2020-11-05', '09:00:00.000', '04:00:00.000'), " +
@@ -87,7 +86,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "('Danilo Andrade', date('now'), '09:30:00.000', '04:45:00.000')";
         db.execSQL(insertAttendances);
     }
-    */
 
     public boolean addUser (Employee emp) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -121,7 +119,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    /*
     public boolean saveAttendance (Attendance att) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -137,7 +134,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
-    */
+
 
     public void insertUsers(ContentValues contentValues){
         getWritableDatabase().insert("user","", contentValues);
@@ -147,11 +144,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         getWritableDatabase().insert("task","", contentValues);
     }
 
-    /*
     public void insertAttendances(ContentValues contentValues){
         getWritableDatabase().insert("attendance","", contentValues);
     }
-    */
+
 
 
     // checks to see if the arguments matches any record in the table
