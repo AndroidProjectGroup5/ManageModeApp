@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     static String name = "database21";
-    static int version = 1;
+    static int version = 2;
 
     private static final String TAG = DatabaseHelper.class.getSimpleName();
     public DatabaseHelper(@Nullable Context context) {
@@ -39,12 +39,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     String attendance = "CREATE TABLE 'attendance' ("+
-            "'EmployeeID'	INTEGER NOT NULL," +
             "'EmployeeName'	VARCHAR NOT NULL," +
             "'AttDate'	TEXT NOT NULL," +
             "'ClockIn'	TEXT NOT NULL," +
             "'ClockOut'	TEXT NOT NULL," +
-            "FOREIGN KEY('EmployeeID') REFERENCES 'users'('id') ON DELETE CASCADE ON UPDATE CASCADE);";
+            "FOREIGN KEY('EmployeeName') REFERENCES 'user'('eName') ON DELETE CASCADE ON UPDATE CASCADE);";
 
 
     @Override
@@ -71,9 +70,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private void fillTasks(SQLiteDatabase db) {
         String insertTasks = "INSERT INTO task (TaskName, TaskDescription, TaskAssignee, TaskStatus) VALUES (" +
-                "'Cleaning', 'Clean the premises after the workday is over.', 'Joe', 'Completed'), " +
-                "('Security check', 'Check if visitors are authorized', 'Michael', 'Ongoing')," +
-                "('Locking down', 'Locking the facilities', 'Mary', 'Not started')";
+                "'Cleaning', 'Clean the premises after the workday is over.', 'Danilo Andrade', 'Completed'), " +
+                "('Security check', 'Check if visitors are authorized', 'Jaimish Patel', 'Ongoing')," +
+                "('Locking down', 'Locking the facilities', 'Suzuka Natsuhara', 'Not started')";
         db.execSQL(insertTasks);
     }
 
@@ -83,6 +82,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "('Andrea Cruz', '2020-10-26', '10:30:00.000', '06:00:00.000')," +
                 "('Jaimish Patel', '2020-09-26', '09:30:00.000', '05:00:00.000')," +
                 "('Suzuka Natsuhara', '2020-11-13', '08:30:00.000', '07:00:00.000')," +
+                "('Employee 1', '2020-09-17', '07:45:00.000', '03:45:00.000')," +
                 "('Danilo Andrade', date('now'), '09:30:00.000', '04:45:00.000')";
         db.execSQL(insertAttendances);
     }

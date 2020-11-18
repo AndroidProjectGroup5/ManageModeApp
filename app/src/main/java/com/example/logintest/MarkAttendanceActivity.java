@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -46,13 +47,13 @@ public class MarkAttendanceActivity extends AppCompatActivity {
         clockIn = findViewById(R.id.txtClockInResult);
         clockOut = findViewById(R.id.txtClockOutResult);
 
+        final Spinner assigneeGroup =(Spinner) findViewById(R.id.txtAssigneeGroup2);
+
         Button button = findViewById(R.id.btnSetDate);
         Button buttoncIn = findViewById(R.id.btnSetClockIn);
         Button buttoncOut = findViewById(R.id.btnSetClockOut);
 
         button.setOnClickListener(new View.OnClickListener() {
-            //String datePicker;
-
             @Override
             public void onClick(View v) {
                 new DatePickerDialog(MarkAttendanceActivity.this,
@@ -95,7 +96,6 @@ public class MarkAttendanceActivity extends AppCompatActivity {
 
         btn_back = findViewById(R.id.btnBackHomeMarkAttend);
         btn_attend = findViewById(R.id.btnSaveAttendance);
-        int selectedEmp = R.id.txtAssigneeGroup2;
 
         btn_attend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,13 +103,16 @@ public class MarkAttendanceActivity extends AppCompatActivity {
                 Attendance att = new Attendance();
                 Employee emp = new Employee();
 
-                emp.seteName(Integer.toString(selectedEmp));
+                String selectedEmployee;
+                selectedEmployee = assigneeGroup.getSelectedItem().toString();
+
+                emp.seteName(selectedEmployee);
                 att.setAttDate(attendance.getText().toString());
                 att.setaClockIn(clockIn.getText().toString());
                 att.setaClockOut(clockOut.getText().toString());
 
                 try{
-                    Toast.makeText(MarkAttendanceActivity.this, emp.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MarkAttendanceActivity.this, att.toString(), Toast.LENGTH_SHORT).show();
 
                 }catch (Exception e) {
                     Toast.makeText(MarkAttendanceActivity.this, "Error creating the attendance object", Toast.LENGTH_SHORT).show();
