@@ -2,12 +2,18 @@ package com.example.logintest;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -18,6 +24,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public DatabaseHelper(@Nullable Context context) {
         super(context, name, null, version);
     }
+
+    private SQLiteDatabase mWritableDB;
+    private SQLiteDatabase mReadableDB;
 
     //################# SQL codes #####################//
     //String createTable = "CREATE TABLE if not exists 'user' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'username' VARCHAR NOT NULL, 'password' VARCHAR NOT NULL, 'isAdmin' BOOL)";
@@ -119,6 +128,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+
+    public Employee searchEmployee (int position){
+        String query = "SELECT * FROM user ORDER BY EmployeeName ASC LIMIT " + position +", 1";
+        Cursor cursor = null;
+        Employee emp = new Employee();
+
+        try {
+            if(mReadableDB == null){
+                mReadableDB = getReadableDatabase();
+            }
+            cursor = mReadableDB.rawQuery(query, null);
+            cursor.moveToFirst();
+
+            emp.setId(cursor.getInt(0));
+            emp.seteName(cursor.getString(1));
+            emp.seteUsername(cursor.getString(2));
+            emp.setePassword(cursor.getString(3));
+
+        } catch (Exception e){
+            Log.d(TAG, "EXCEPTION! " + e);
+        } finally {
+            cursor.close(); // have to close the cursor to release the resources
+            return emp;
+        }
+    }
+
+    public long count(){
+        if (mReadableDB == null) {
+            mReadableDB = getReadableDatabase();
+        }
+        return DatabaseUtils.queryNumEntries(mReadableDB, "user");
+    }
+
     public boolean saveAttendance (Attendance att) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -135,10 +177,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-
-    public void insertUsers(ContentValues contentValues){
-        getWritableDatabase().insert("user","", contentValues);
+    public int delete (int id){
+        int deleted = 0;
+        try{
+            if(mWritableDB == null){
+                mWritableDB = getWritableDatabase();
+            }
+            deleted = mWritableDB.delete("user", 0 + " =? ", new String[]{String.valueOf(id)});
+        }catch (Exception e){
+            Log.d(TAG, "Delete Exception!" + e.getMessage());
+        }
+        return deleted;
     }
+
+//----- NOTE: I don't think we need this one, Ive commented it for now.
+/*    public void insertUsers(ContentValues contentValues){
+        getWritableDatabase().insert("user","", contentValues);
+    }*/
 
     public void insertTasks(ContentValues contentValues){
         getWritableDatabase().insert("task","", contentValues);

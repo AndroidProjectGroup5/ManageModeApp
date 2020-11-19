@@ -2,6 +2,9 @@ package com.example.logintest;
 
 public class Employee {
 
+
+
+    private int id;
     private String eName;
     private String eUsername;
     private String ePassword;
@@ -27,6 +30,9 @@ public class Employee {
 
     //----- Getters and Setters
 
+    public int getId() {return id;}
+
+    public void setId(int id) {this.id = id;}
 
     public String geteName() {return eName;}
 
