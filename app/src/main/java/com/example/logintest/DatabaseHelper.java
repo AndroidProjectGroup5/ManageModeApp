@@ -230,6 +230,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS 'attendance'");
         onCreate(db);
     }
+
+
+
+
+
+
+    // For TaskSpinner
+    public List<String> getTaskAssigneeLabels(){
+        List<String> list = new ArrayList<>();
+
+        String selectQuery = "SELECT  * FROM 'task'";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);//selectQuery,selectedArguments
+
+        if (cursor.moveToFirst()) {
+            do {
+                list.add(cursor.getString(2));//adding 2nd column data
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return list;
+    }
 }
 
 

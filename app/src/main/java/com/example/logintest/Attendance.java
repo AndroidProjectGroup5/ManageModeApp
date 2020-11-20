@@ -2,15 +2,17 @@ package com.example.logintest;
 
 public class Attendance extends Employee {
 
-    private String eName;
+    private int aId;
+    private String aAssignee;
     private String AttDate;
     private String aClockIn;
     private String aClockOut;
 
-    public Attendance() {}
+    public Attendance() {
+    }
 
-    public Attendance(String eName, String attdate, String cin, String cout){
-        this.eName = eName;
+    public Attendance(String attdate, String cin, String cout){
+        this.aAssignee = super.geteName();
         this.AttDate = attdate;
         this.aClockIn = cin;
         this.aClockOut = cout;
@@ -19,11 +21,27 @@ public class Attendance extends Employee {
     @Override
     public String toString() {
         return "Attendance{" +
-                ", attEmpName='" + eName + '\'' +
+                ", attEmpName='" + aAssignee + '\'' +
                 ", attDate='" + AttDate + '\'' +
                 ", aClockIn='" + aClockIn + '\'' +
                 ", aClockOut='" + aClockOut + '\'' +
                 '}';
+    }
+
+    public int gettId() {
+        return this.aId;
+    }
+
+    public void settId(int id) {
+        this.aId = id;
+    }
+
+    public String getaAssignee() {
+        return this.aAssignee;
+    }
+
+    public void setaAssignee(String assignee) {
+        this.aAssignee = assignee;
     }
 
     public String getAttDate() {return AttDate;}

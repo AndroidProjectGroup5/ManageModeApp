@@ -43,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtStatusGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerStatusGroup" />
 
     <TextView
         android:id="@+id/txtTaskTitle"
@@ -104,7 +104,7 @@
         app:layout_constraintTop_toBottomOf="@+id/inputTaskName" />
 
     <Spinner
-        android:id="@+id/txtAssigneeGroup"
+        android:id="@+id/spinnerAssingees"
         android:layout_width="250dp"
         android:layout_height="40dp"
         android:layout_marginTop="24dp"
@@ -117,7 +117,7 @@
         app:layout_constraintTop_toBottomOf="@+id/inputTaskDescription" />
 
     <Spinner
-        android:id="@+id/txtStatusGroup"
+        android:id="@+id/spinnerStatusGroup"
         android:layout_width="250dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
@@ -127,6 +127,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAssigneeGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerAssingees" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,29 +1,37 @@
 package com.example.logintest;
 
-public class Task {
+public class Task extends Employee {
 
     private int tID;
     private String tName;
     private String tDescr;
-    private String tAssign;
+    private String tAssignee;
     private String tStat;
 
-    public Task(){
+    public Task(){}
 
-    }
-
-    public Task(String taskname, String taskdesc, String taskassignee, String taskstatus){
+    public Task(String taskname, String taskdesc, String taskstatus){
         this.tName = taskname;
         this.tDescr = taskdesc;
-        this.tAssign = taskassignee;
+        this.tAssignee = super.geteName();
         this.tStat = taskstatus;
     }
 
-    public int getId() {
+    @Override
+    public String toString() {
+        return "Task{" +
+                ", tAssignee='" + tAssignee + '\'' +
+                ", tName='" + tName + '\'' +
+                ", tDescr='" + tDescr + '\'' +
+                ", tStat='" + tStat + '\'' +
+                '}';
+    }
+
+    public int gettId() {
         return this.tID;
     }
 
-    public void setId(int id) {
+    public void settId(int id) {
         this.tID = id;
     }
 
@@ -44,11 +52,11 @@ public class Task {
     }
 
     public String gettAssignee() {
-        return this.tAssign;
+        return this.tAssignee;
     }
 
-    public void settAssignee(String assg) {
-        this.tAssign = assg;
+    public void settAssignee(String assignee) {
+        this.tAssignee = assignee;
     }
 
     public String gettStatus() {

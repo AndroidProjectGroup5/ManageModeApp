@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
@@ -17,16 +19,34 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.DateFormat;
-import java.util.Calendar;
 
-@RequiresApi(api = Build.VERSION_CODES.O)
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+@RequiresApi(api = Build.VERSION_CODES.M)
 public class MarkAttendanceActivity extends AppCompatActivity {
 
     Button btn_attend, btn_back;
     private TextView attendance, clockIn, clockOut;
 
+    DatabaseHelper databaseHelper = new DatabaseHelper(MarkAttendanceActivity.this);
+
     Calendar c = Calendar.getInstance(); // gets the date
     DateFormat fmtDate = DateFormat.getDateInstance(); // format the date displayed in the app
+
+    /*
+    // USE BUNDLE TO GET SELECTED ITEM ON SPINNER DROP DOWN
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.second_activity);
+
+        TextView  textView=(TextView) findViewById(R.id.txt_bundle);
+        Bundle bundle=getIntent().getExtras();
+        String data=bundle.get("data").toString();
+        textView.setText(data);
+    }*/
 
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         @Override
@@ -47,13 +67,48 @@ public class MarkAttendanceActivity extends AppCompatActivity {
         clockIn = findViewById(R.id.txtClockInResult);
         clockOut = findViewById(R.id.txtClockOutResult);
 
-        final Spinner assigneeGroup =(Spinner) findViewById(R.id.txtAssigneeGroup2);
-
-        Button button = findViewById(R.id.btnSetDate);
+        Button buttonDate = findViewById(R.id.btnSetDate);
         Button buttoncIn = findViewById(R.id.btnSetClockIn);
         Button buttoncOut = findViewById(R.id.btnSetClockOut);
 
-        button.setOnClickListener(new View.OnClickListener() {
+
+        // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜Loading spinner
+        DatabaseHelper db = new DatabaseHelper(getApplicationContext());
+        Spinner assignee_group = findViewById(R.id.spinnerAssingees);
+
+        List<String> categories = new ArrayList<>();
+        categories.add("Item 1");
+        categories.add("Item 2");
+        categories.add("Item 3");
+        categories.add("Item 4");
+        categories.add("Item 5");
+        categories.add("Item 6");
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, categories);
+        //List<String> labels = db.getTaskAssigneeLabels();
+        //ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, labels);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        assignee_group.setAdapter(dataAdapter);
+
+        assignee_group.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // On selecting a spinner item
+                String item = parent.getItemAtPosition(position).toString();
+
+                // Showing selected spinner item
+                Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜End of loading spinner
+
+
+        buttonDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new DatePickerDialog(MarkAttendanceActivity.this,
@@ -101,12 +156,13 @@ public class MarkAttendanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Attendance att = new Attendance();
-                Employee emp = new Employee();
 
-                String selectedEmployee;
-                selectedEmployee = assigneeGroup.getSelectedItem().toString();
+                //Spinner assigneeGroup = findViewById(R.id.spinnerAssignees);
 
-                emp.seteName(selectedEmployee);
+                //String selectedEmployee;
+                //selectedEmployee = assigneeGroup.getOnItemSelectedListener().toString();
+
+                att.setaAssignee(attendance.getText().toString());
                 att.setAttDate(attendance.getText().toString());
                 att.setaClockIn(clockIn.getText().toString());
                 att.setaClockOut(clockOut.getText().toString());
@@ -116,10 +172,9 @@ public class MarkAttendanceActivity extends AppCompatActivity {
 
                 }catch (Exception e) {
                     Toast.makeText(MarkAttendanceActivity.this, "Error creating the attendance object", Toast.LENGTH_SHORT).show();
-                    att = new Attendance("error, ", "error", "error", "error");
+                    att = new Attendance("error", "error", "error");
                 }
 
-                DatabaseHelper databaseHelper = new DatabaseHelper(MarkAttendanceActivity.this);
                 Boolean success = databaseHelper.saveAttendance(att);
                 Toast.makeText(MarkAttendanceActivity.this, "Success = " + success, Toast.LENGTH_SHORT).show();
             }
@@ -133,4 +188,5 @@ public class MarkAttendanceActivity extends AppCompatActivity {
             }
         });
     }
+
 }
