@@ -73,9 +73,10 @@ public class MarkAttendanceActivity extends AppCompatActivity {
 
 
         // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜Loading spinner
-        DatabaseHelper db = new DatabaseHelper(getApplicationContext());
+        DatabaseHelper db = new DatabaseHelper(this);
         Spinner assignee_group = findViewById(R.id.spinnerAssingees);
 
+        /*
         List<String> categories = new ArrayList<>();
         categories.add("Item 1");
         categories.add("Item 2");
@@ -85,10 +86,16 @@ public class MarkAttendanceActivity extends AppCompatActivity {
         categories.add("Item 6");
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, categories);
-        //List<String> labels = db.getTaskAssigneeLabels();
-        //ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, labels);
+        */
+
+        List<String> labels = db.getAttendAssigneeLabels();
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_dropdown_item, labels);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         assignee_group.setAdapter(dataAdapter);
+
+
+
+
 
         assignee_group.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

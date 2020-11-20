@@ -53,7 +53,7 @@ public class AddTaskActivity extends AppCompatActivity {
             }
         });
         // 2 - Loading spinner data from database
-        loadSpinnerData();
+        //loadSpinnerData();
 
         btn_save_task.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +94,8 @@ public class AddTaskActivity extends AppCompatActivity {
         });
     }
 
+    /*
+
     private void loadSpinnerData() {
         DatabaseHelper db = new DatabaseHelper(getApplicationContext());
         List<String> labels = db.getTaskAssigneeLabels();
@@ -103,5 +105,5 @@ public class AddTaskActivity extends AppCompatActivity {
 
         assignee_group.setAdapter(dataAdapter);
 
-    }
+    }*/
 }

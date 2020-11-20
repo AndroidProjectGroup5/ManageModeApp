@@ -236,18 +236,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    // For TaskSpinner
-    public List<String> getTaskAssigneeLabels(){
+    // For Attendance Spinner
+    public List<String> getAttendAssigneeLabels(){
         List<String> list = new ArrayList<>();
 
-        String selectQuery = "SELECT  * FROM 'task'";
+        String selectQuery = "SELECT * FROM 'attendance'";
 
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);//selectQuery,selectedArguments
+        Cursor cursor = db.rawQuery(selectQuery, null); //selectQuery,selectedArguments
 
         if (cursor.moveToFirst()) {
             do {
-                list.add(cursor.getString(2));//adding 2nd column data
+                list.add(cursor.getString(2));//adding 3rd column data
             } while (cursor.moveToNext());
         }
         cursor.close();

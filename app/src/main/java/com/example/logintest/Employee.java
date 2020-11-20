@@ -2,8 +2,6 @@ package com.example.logintest;
 
 public class Employee {
 
-
-
     private int id;
     private String eName;
     private String eUsername;
