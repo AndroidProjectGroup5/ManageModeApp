@@ -18,7 +18,7 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     static String name = "database31";
-    static int version = 3;
+    static int version = 4;
 
     private static final String TAG = DatabaseHelper.class.getSimpleName();
 
@@ -166,7 +166,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean saveAttendance(Attendance att) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("EmployeeName", att.geteName());
+        cv.put("EmployeeID", att.getEmployeeID());
         cv.put("AttDate", att.getAttDate());
         cv.put("ClockIn", att.getaClockIn());
         cv.put("ClockOut", att.getaClockOut());
@@ -233,30 +233,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    /*
-            try {
-            if(mReadableDB == null){
-                mReadableDB = getReadableDatabase();
-            }
-            cursor = mReadableDB.rawQuery(query, null);
-            cursor.moveToFirst();
-
-            emp.setId(cursor.getInt(0));
-            emp.seteName(cursor.getString(1));
-            emp.seteUsername(cursor.getString(2));
-            emp.setePassword(cursor.getString(3));
-
-        } catch (Exception e){
-            Log.d(TAG, "EXCEPTION! " + e);
-        } finally {
-            cursor.close(); // have to close the cursor to release the resources
-            return emp;
-        }
-     */
-    public String lookForID(String username) {
+    public Employee lookForEmp(String username) {
         String lfID = "SELECT * FROM user WHERE username = '" + username + "'";
-        String loggedInID = "";
         Cursor cursor = null;
+        Employee lookForEmp = new Employee();
 
         try {
             if (mReadableDB == null) {
@@ -264,47 +244,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
             cursor = mReadableDB.rawQuery(lfID, null);
             cursor.moveToFirst();
-            loggedInID = cursor.getString(1);
+            lookForEmp.setId(cursor.getInt(0));
+            lookForEmp.seteName(cursor.getString(1));
+
 
         } catch (Exception e) {
             Log.d(TAG, "EXCEPTION! " + e);
         } finally {
             cursor.close(); // have to close the cursor to release the resources
-            return loggedInID;
+
+            return lookForEmp;
         }
     }
 
-
-
-
-    // For Attendance Spinner
-    public List<Attendance> getAttendAssigneeLabels() {
-        List<Attendance> list = new ArrayList<>();
-        Cursor c = null;
-        Attendance att = new Attendance();
-        String selectQuery = "SELECT * FROM 'attendance'";
-
-        try {
-            if (mReadableDB == null) {
-                mReadableDB = getReadableDatabase();
-            }
-            c = mReadableDB.rawQuery(selectQuery, null);
-
-            if (c.moveToFirst()) {
-                do {
-                    att.setaAssignee(c.getString(0));
-                    list.add(att);
-                    //list.add(c.getString(2));//adding 3rd column data
-                } while (c.moveToNext());
-            }
-        } catch (Exception e) {
-            Log.d(TAG, "EXCEPTION! " + e);
-        } finally {
-            c.close();
-
-            return list;
-        }
-    }
 }
 
 

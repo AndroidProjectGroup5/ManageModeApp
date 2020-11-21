@@ -3,7 +3,7 @@ package com.example.logintest;
 public class Attendance extends Employee {
 
     private int aId;
-    private String aAssignee;
+    private int EmployeeID;
     private String AttDate;
     private String aClockIn;
     private String aClockOut;
@@ -13,7 +13,7 @@ public class Attendance extends Employee {
 
     public Attendance(int aId, String attdate, String cin, String cout){
         this.setId(aId);
-        this.aAssignee = super.geteName();
+        //this.EmployeeID = super.getId();
         this.AttDate = attdate;
         this.aClockIn = cin;
         this.aClockOut = cout;
@@ -22,7 +22,7 @@ public class Attendance extends Employee {
     @Override
     public String toString() {
         return "Attendance{" +
-                ", attEmpName='" + aAssignee + '\'' +
+                ", EmployeeID ='" + EmployeeID + '\'' +
                 ", attDate='" + AttDate + '\'' +
                 ", aClockIn='" + aClockIn + '\'' +
                 ", aClockOut='" + aClockOut + '\'' +
@@ -37,12 +37,12 @@ public class Attendance extends Employee {
         this.aId = id;
     }
 
-    public String getaAssignee() {
-        return this.aAssignee;
+    public int getEmployeeID() {
+        return this.EmployeeID;
     }
 
-    public void setaAssignee(String assignee) {
-        this.aAssignee = assignee;
+    public void setEmployeeID(int employeeID) {
+        this.EmployeeID = employeeID;
     }
 
     public String getAttDate() {return AttDate;}

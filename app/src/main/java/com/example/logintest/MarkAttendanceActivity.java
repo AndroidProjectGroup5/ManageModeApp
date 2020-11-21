@@ -30,8 +30,8 @@ import java.util.List;
 public class MarkAttendanceActivity extends AppCompatActivity {
 
     Button btn_attend, btn_back;
-    private TextView attendance, clockIn, clockOut;
-    TextView txtName;
+    private TextView date, clockIn, clockOut;
+    TextView txtName, txtID;
 
     DatabaseHelper databaseHelper = new DatabaseHelper(MarkAttendanceActivity.this);
 
@@ -45,7 +45,7 @@ public class MarkAttendanceActivity extends AppCompatActivity {
             c.set(Calendar.YEAR, i);
             c.set(Calendar.MONTH, i1);
             c.set(Calendar.DAY_OF_MONTH, i2);
-            attendance.setText("Date: " + fmtDate.format(c.getTime()));
+            date.setText("Date: " + fmtDate.format(c.getTime()));
         }
     }; // event listener after user select a date from calendar
 
@@ -54,13 +54,16 @@ public class MarkAttendanceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mark_attendance);
 
-        attendance = findViewById(R.id.txtAttendDateResult);
+        date = findViewById(R.id.txtAttendDateResult);
         clockIn = findViewById(R.id.txtClockInResult);
         clockOut = findViewById(R.id.txtClockOutResult);
         txtName = findViewById(R.id.txtEmpName);
 
         SharedPreferences loggedInInfo = PreferenceManager.getDefaultSharedPreferences(this);
-        txtName.setText(loggedInInfo.getString("id", null));
+        txtName.setText(loggedInInfo.getString("EmpName", null));
+        //txtName.setText(loggedInInfo.getInt("id", 0));
+        //(loggedInInfo.getInt("id", 0));
+
 
         Button buttonDate = findViewById(R.id.btnSetDate);
         Button buttoncIn = findViewById(R.id.btnSetClockIn);
@@ -111,13 +114,13 @@ public class MarkAttendanceActivity extends AppCompatActivity {
         btn_back = findViewById(R.id.btnBackHomeMarkAttend);
         btn_attend = findViewById(R.id.btnSaveAttendance);
 
-    /*    btn_attend.setOnClickListener(new View.OnClickListener() {
+        btn_attend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Attendance att = new Attendance();
 
-                att.setaAssignee(attendance.getText().toString());
-                att.setAttDate(attendance.getText().toString());
+                att.setEmployeeID(1);
+                att.setAttDate(date.getText().toString());
                 att.setaClockIn(clockIn.getText().toString());
                 att.setaClockOut(clockOut.getText().toString());
 
@@ -131,8 +134,9 @@ public class MarkAttendanceActivity extends AppCompatActivity {
 
                 Boolean success = databaseHelper.saveAttendance(att);
                 Toast.makeText(MarkAttendanceActivity.this, "Success = " + success, Toast.LENGTH_SHORT).show();
+
             }
-        });*/
+        });
 
 
         btn_back.setOnClickListener(new View.OnClickListener() {

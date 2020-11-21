@@ -17,7 +17,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText et_username, et_password;
     Button btn_login;
     DatabaseHelper databaseHelper;
-    String loggedInID, EmpName;
+    Employee loggedEmp = new Employee();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +40,11 @@ public class LoginActivity extends AppCompatActivity {
 
                 if(databaseHelper.isLoginValid(usernameValue, passwordValue)){
 
-                    loggedInID = databaseHelper.lookForID(et_username.getText().toString());
+                    loggedEmp = databaseHelper.lookForEmp(et_username.getText().toString());
+
                     SharedPreferences.Editor editor = loggedInInfo.edit();
-                    editor.putString("id", loggedInID);
-                    //editor.putString("EmpName", EmpName);
+                    editor.putString("id", loggedEmp.geteUsername());
+                    editor.putString("EmpName", loggedEmp.geteName());
                     editor.commit();
 
 
