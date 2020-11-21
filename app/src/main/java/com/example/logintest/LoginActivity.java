@@ -1,8 +1,10 @@
 package com.example.logintest;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,16 +17,17 @@ public class LoginActivity extends AppCompatActivity {
     EditText et_username, et_password;
     Button btn_login;
     DatabaseHelper databaseHelper;
+    String loggedInID, EmpName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
         et_username = findViewById(R.id.et_username);
         et_password = findViewById(R.id.et_password);
         btn_login = findViewById(R.id.btn_login);
+        SharedPreferences loggedInInfo = PreferenceManager.getDefaultSharedPreferences(this);
 
         databaseHelper = new DatabaseHelper(LoginActivity.this);
 
@@ -35,9 +38,17 @@ public class LoginActivity extends AppCompatActivity {
                 String passwordValue = et_password.getText().toString();
 
                 if(databaseHelper.isLoginValid(usernameValue, passwordValue)){
+
+                    loggedInID = databaseHelper.lookForID(et_username.getText().toString());
+                    SharedPreferences.Editor editor = loggedInInfo.edit();
+                    editor.putString("id", loggedInID);
+                    //editor.putString("EmpName", EmpName);
+                    editor.commit();
+
+
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(intent);
-                    Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(LoginActivity.this, loggedInInfo.getString("id", ""), Toast.LENGTH_SHORT).show();
 
                 }else{
                     Toast.makeText(LoginActivity.this, "Invalid username or password.", Toast.LENGTH_SHORT).show();

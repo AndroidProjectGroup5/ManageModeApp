@@ -11,7 +11,8 @@ public class Attendance extends Employee {
     public Attendance() {
     }
 
-    public Attendance(String attdate, String cin, String cout){
+    public Attendance(int aId, String attdate, String cin, String cout){
+        this.setId(aId);
         this.aAssignee = super.geteName();
         this.AttDate = attdate;
         this.aClockIn = cin;
@@ -28,11 +29,11 @@ public class Attendance extends Employee {
                 '}';
     }
 
-    public int gettId() {
+    public int getId() {
         return this.aId;
     }
 
-    public void settId(int id) {
+    public void setId(int id) {
         this.aId = id;
     }
 

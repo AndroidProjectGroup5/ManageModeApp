@@ -17,10 +17,11 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    static String name = "database21";
-    static int version = 2;
+    static String name = "database31";
+    static int version = 3;
 
     private static final String TAG = DatabaseHelper.class.getSimpleName();
+
     public DatabaseHelper(@Nullable Context context) {
         super(context, name, null, version);
     }
@@ -37,9 +38,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             " 'password' VARCHAR NOT NULL)";
 
     /*
-    * Put a new foreign key pointing to employee id
-    * query for that id to find username
-    * */
+     * Put a new foreign key pointing to employee id
+     * query for that id to find username
+     * */
     String task = "CREATE TABLE if not exists 'task' ('task_id' INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "'TaskName' VARCHAR NOT NULL, " +
             "'TaskDescription' VARCHAR NOT NULL," +
@@ -47,12 +48,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             " 'TaskStatus' VARCHAR NOT NULL)";
 
 
-    String attendance = "CREATE TABLE 'attendance' ("+
-            "'EmployeeName'	VARCHAR NOT NULL," +
+    String attendance = "CREATE TABLE 'attendance' (" +
+            "'attID' INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "'EmployeeID'	VARCHAR NOT NULL," +
             "'AttDate'	TEXT NOT NULL," +
             "'ClockIn'	TEXT NOT NULL," +
             "'ClockOut'	TEXT NOT NULL," +
-            "FOREIGN KEY('EmployeeName') REFERENCES 'user'('eName') ON DELETE CASCADE ON UPDATE CASCADE);";
+            "FOREIGN KEY('EmployeeID') REFERENCES 'user'('id') ON DELETE CASCADE ON UPDATE CASCADE);";
 
 
     @Override
@@ -86,17 +88,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void fillAttendances(SQLiteDatabase db) {
-        String insertAttendances = "INSERT INTO attendance (EmployeeName, AttDate, ClockIn, ClockOut) VALUES (" +
-                "'Danilo Andrade', '2020-11-05', '09:00:00.000', '04:00:00.000'), " +
-                "('Andrea Cruz', '2020-10-26', '10:30:00.000', '06:00:00.000')," +
-                "('Jaimish Patel', '2020-09-26', '09:30:00.000', '05:00:00.000')," +
-                "('Suzuka Natsuhara', '2020-11-13', '08:30:00.000', '07:00:00.000')," +
-                "('Employee 1', '2020-09-17', '07:45:00.000', '03:45:00.000')," +
-                "('Danilo Andrade', date('now'), '09:30:00.000', '04:45:00.000')";
+        String insertAttendances = "INSERT INTO attendance (EmployeeID, AttDate, ClockIn, ClockOut) VALUES (" +
+                "2, '2020-11-05', '09:00:00.000', '04:00:00.000'), " +
+                "(3, '2020-10-26', '10:30:00.000', '06:00:00.000')," +
+                "(4, '2020-09-26', '09:30:00.000', '05:00:00.000')," +
+                "(5, '2020-11-13', '08:30:00.000', '07:00:00.000')," +
+                "(6, '2020-09-17', '07:45:00.000', '03:45:00.000')," +
+                "(2, date('now'), '09:30:00.000', '04:45:00.000')";
         db.execSQL(insertAttendances);
     }
 
-    public boolean addUser (Employee emp) {
+    public boolean addUser(Employee emp) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("EmployeeName", emp.geteName());
@@ -105,14 +107,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //cv.put("isAdmin", emp.getAdmin());
 
         long insert = db.insert("user", null, cv);
-        if(insert == -1){
+        if (insert == -1) {
             return false;
-        }else {
+        } else {
             return true;
         }
     }
 
-    public boolean addTask (Task tsk) {
+    public boolean addTask(Task tsk) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("TaskName", tsk.gettName());
@@ -121,20 +123,118 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put("TaskStatus", tsk.gettStatus());
 
         long insert = db.insert("task", null, cv);
-        if(insert == -1){
+        if (insert == -1) {
             return false;
-        }else {
+        } else {
             return true;
         }
     }
 
 
-    public Employee searchEmployee (int position){
-        String query = "SELECT * FROM user ORDER BY EmployeeName ASC LIMIT " + position +", 1";
+    public Employee searchEmployee(int position) {
+        String query = "SELECT * FROM user ORDER BY EmployeeName ASC LIMIT " + position + ", 1";
         Cursor cursor = null;
         Employee emp = new Employee();
 
         try {
+            if (mReadableDB == null) {
+                mReadableDB = getReadableDatabase();
+            }
+            cursor = mReadableDB.rawQuery(query, null);
+            cursor.moveToFirst();
+
+            emp.setId(cursor.getInt(0));
+            emp.seteName(cursor.getString(1));
+            emp.seteUsername(cursor.getString(2));
+            emp.setePassword(cursor.getString(3));
+
+        } catch (Exception e) {
+            Log.d(TAG, "EXCEPTION! " + e);
+        } finally {
+            cursor.close(); // have to close the cursor to release the resources
+            return emp;
+        }
+    }
+
+    public long count() {
+        if (mReadableDB == null) {
+            mReadableDB = getReadableDatabase();
+        }
+        return DatabaseUtils.queryNumEntries(mReadableDB, "user");
+    }
+
+    public boolean saveAttendance(Attendance att) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("EmployeeName", att.geteName());
+        cv.put("AttDate", att.getAttDate());
+        cv.put("ClockIn", att.getaClockIn());
+        cv.put("ClockOut", att.getaClockOut());
+
+        long insert = db.insert("attendance", null, cv);
+        if (insert == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public int delete(int id) {
+        int deleted = 0;
+        try {
+            if (mWritableDB == null) {
+                mWritableDB = getWritableDatabase();
+            }
+            deleted = mWritableDB.delete("user", 0 + " =? ", new String[]{String.valueOf(id)});
+        } catch (Exception e) {
+            Log.d(TAG, "Delete Exception!" + e.getMessage());
+        }
+        return deleted;
+    }
+
+//----- NOTE: I don't think we need this one, Ive commented it for now.
+/*    public void insertUsers(ContentValues contentValues){
+        getWritableDatabase().insert("user","", contentValues);
+    }*/
+
+    public void insertTasks(ContentValues contentValues) {
+        getWritableDatabase().insert("task", "", contentValues);
+    }
+
+    public void insertAttendances(ContentValues contentValues) {
+        getWritableDatabase().insert("attendance", "", contentValues);
+    }
+
+
+    // checks to see if the arguments matches any record in the table
+    public boolean isLoginValid(String username, String password) {
+        String sql = "Select count(*) from user where username ='" + username + "' and password ='" + password + "'";
+        SQLiteStatement statement = getReadableDatabase().compileStatement(sql);
+
+        long l = statement.simpleQueryForLong();
+        statement.close();
+
+        if (l == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+        Log.w(DatabaseHelper.class.getName(),
+                "Upgrading database from version " + i + " to "
+                        + i1 + ", which will destroy all old data");
+        db.execSQL("DROP TABLE IF EXISTS 'user'");
+        db.execSQL("DROP TABLE IF EXISTS 'task'");
+        db.execSQL("DROP TABLE IF EXISTS 'attendance'");
+        onCreate(db);
+    }
+
+
+    /*
+            try {
             if(mReadableDB == null){
                 mReadableDB = getReadableDatabase();
             }
@@ -152,107 +252,58 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cursor.close(); // have to close the cursor to release the resources
             return emp;
         }
-    }
+     */
+    public String lookForID(String username) {
+        String lfID = "SELECT * FROM user WHERE username = '" + username + "'";
+        String loggedInID = "";
+        Cursor cursor = null;
 
-    public long count(){
-        if (mReadableDB == null) {
-            mReadableDB = getReadableDatabase();
-        }
-        return DatabaseUtils.queryNumEntries(mReadableDB, "user");
-    }
-
-    public boolean saveAttendance (Attendance att) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put("EmployeeName", att.geteName());
-        cv.put("AttDate", att.getAttDate());
-        cv.put("ClockIn", att.getaClockIn());
-        cv.put("ClockOut", att.getaClockOut());
-
-        long insert = db.insert("attendance", null, cv);
-        if(insert == -1){
-            return false;
-        }else {
-            return true;
-        }
-    }
-
-    public int delete (int id){
-        int deleted = 0;
-        try{
-            if(mWritableDB == null){
-                mWritableDB = getWritableDatabase();
+        try {
+            if (mReadableDB == null) {
+                mReadableDB = getReadableDatabase();
             }
-            deleted = mWritableDB.delete("user", 0 + " =? ", new String[]{String.valueOf(id)});
-        }catch (Exception e){
-            Log.d(TAG, "Delete Exception!" + e.getMessage());
-        }
-        return deleted;
-    }
+            cursor = mReadableDB.rawQuery(lfID, null);
+            cursor.moveToFirst();
+            loggedInID = cursor.getString(1);
 
-//----- NOTE: I don't think we need this one, Ive commented it for now.
-/*    public void insertUsers(ContentValues contentValues){
-        getWritableDatabase().insert("user","", contentValues);
-    }*/
-
-    public void insertTasks(ContentValues contentValues){
-        getWritableDatabase().insert("task","", contentValues);
-    }
-
-    public void insertAttendances(ContentValues contentValues){
-        getWritableDatabase().insert("attendance","", contentValues);
-    }
-
-
-
-    // checks to see if the arguments matches any record in the table
-    public boolean isLoginValid(String username, String password){
-        String sql = "Select count(*) from user where username ='" + username + "' and password ='" + password + "'";
-        SQLiteStatement statement = getReadableDatabase().compileStatement(sql);
-
-        long l = statement.simpleQueryForLong();
-        statement.close();
-
-        if(l == 1){
-            return true;
-        }else{
-            return false;
+        } catch (Exception e) {
+            Log.d(TAG, "EXCEPTION! " + e);
+        } finally {
+            cursor.close(); // have to close the cursor to release the resources
+            return loggedInID;
         }
     }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        Log.w(DatabaseHelper.class.getName(),
-                "Upgrading database from version " + i + " to "
-                        + i1 + ", which will destroy all old data");
-        db.execSQL("DROP TABLE IF EXISTS 'user'");
-        db.execSQL("DROP TABLE IF EXISTS 'task'");
-        db.execSQL("DROP TABLE IF EXISTS 'attendance'");
-        onCreate(db);
-    }
-
-
 
 
 
 
     // For Attendance Spinner
-    public List<String> getAttendAssigneeLabels(){
-        List<String> list = new ArrayList<>();
-
+    public List<Attendance> getAttendAssigneeLabels() {
+        List<Attendance> list = new ArrayList<>();
+        Cursor c = null;
+        Attendance att = new Attendance();
         String selectQuery = "SELECT * FROM 'attendance'";
 
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null); //selectQuery,selectedArguments
+        try {
+            if (mReadableDB == null) {
+                mReadableDB = getReadableDatabase();
+            }
+            c = mReadableDB.rawQuery(selectQuery, null);
 
-        if (cursor.moveToFirst()) {
-            do {
-                list.add(cursor.getString(2));//adding 3rd column data
-            } while (cursor.moveToNext());
+            if (c.moveToFirst()) {
+                do {
+                    att.setaAssignee(c.getString(0));
+                    list.add(att);
+                    //list.add(c.getString(2));//adding 3rd column data
+                } while (c.moveToNext());
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "EXCEPTION! " + e);
+        } finally {
+            c.close();
+
+            return list;
         }
-        cursor.close();
-
-        return list;
     }
 }
 

@@ -49,5 +49,6 @@
     <string name="btnSaveAttendance">Save Attendance</string>
     <string name="btnHome">Home</string>
     <string name="btnChangeTaskStatus">Save</string>
+    <string name="textEmpName">"Employee: "</string>
 
 </resources>
