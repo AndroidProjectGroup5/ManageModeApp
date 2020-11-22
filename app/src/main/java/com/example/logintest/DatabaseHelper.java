@@ -8,16 +8,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    static String name = "database31";
+    static String name = "database33";
     static int version = 4;
 
     private static final String TAG = DatabaseHelper.class.getSimpleName();
@@ -37,20 +33,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "'username' VARCHAR NOT NULL," +
             " 'password' VARCHAR NOT NULL)";
 
-    /*
-     * Put a new foreign key pointing to employee id
-     * query for that id to find username
-     * */
+
     String task = "CREATE TABLE if not exists 'task' ('task_id' INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            "'EmployeeID' INT NOT NULL," +
             "'TaskName' VARCHAR NOT NULL, " +
             "'TaskDescription' VARCHAR NOT NULL," +
-            "'TaskAssignee' VARCHAR NOT NULL," +
-            " 'TaskStatus' VARCHAR NOT NULL)";
+            "'TaskStatus' VARCHAR NOT NULL," +
+            "FOREIGN KEY('EmployeeID') REFERENCES 'user'('id') ON DELETE CASCADE ON UPDATE CASCADE);";
 
 
     String attendance = "CREATE TABLE 'attendance' (" +
             "'attID' INTEGER PRIMARY KEY AUTOINCREMENT," +
-            "'EmployeeID'	VARCHAR NOT NULL," +
+            "'EmployeeID' INT NOT NULL," +
             "'AttDate'	TEXT NOT NULL," +
             "'ClockIn'	TEXT NOT NULL," +
             "'ClockOut'	TEXT NOT NULL," +
@@ -80,10 +74,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void fillTasks(SQLiteDatabase db) {
-        String insertTasks = "INSERT INTO task (TaskName, TaskDescription, TaskAssignee, TaskStatus) VALUES (" +
-                "'Cleaning', 'Clean the premises after the workday is over.', 'Danilo Andrade', 'Completed'), " +
-                "('Security check', 'Check if visitors are authorized', 'Jaimish Patel', 'Ongoing')," +
-                "('Locking down', 'Locking the facilities', 'Suzuka Natsuhara', 'Not started')";
+        String insertTasks = "INSERT INTO task (EmployeeID, TaskName, TaskDescription, TaskStatus) VALUES (" +
+                "1 ,'Cleaning', 'Clean the premises after the workday is over.', 'Completed'), " +
+                "(2, 'Security check', 'Check if visitors are authorized', 'Ongoing')," +
+                "(3, 'Locking down', 'Locking the facilities', 'Not started')";
         db.execSQL(insertTasks);
     }
 
@@ -117,9 +111,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean addTask(Task tsk) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("TaskName", tsk.gettName());
+        cv.put("EmployeeID", tsk.getEmployeeID());
+        cv.put("TaskName", tsk.getTaskName());
         cv.put("TaskDescription", tsk.gettDescription());
-        cv.put("TaskAssignee", tsk.gettAssignee());
         cv.put("TaskStatus", tsk.gettStatus());
 
         long insert = db.insert("task", null, cv);
@@ -127,6 +121,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         } else {
             return true;
+        }
+    }
+
+    public Task searchTask(int position, int employeeID) {
+        String query = "SELECT * FROM task WHERE EmployeeID = 'employeeID' ORDER BY TaskName ASC LIMIT " + position + ", 1";
+        Cursor cursor = null;
+        Task task = new Task();
+        try {
+            if (mReadableDB == null) {
+                mReadableDB = getReadableDatabase();
+            }
+            cursor = mReadableDB.rawQuery(query, null);
+            cursor.moveToFirst();
+
+            task.settId(cursor.getInt(0));
+            task.setEmployeeID(cursor.getInt(1));
+            task.setTaskName(cursor.getString(2));
+            task.settDescription(cursor.getString(3));
+            task.settStatus(cursor.getString(4));
+
+        } catch (Exception e) {
+            Log.d(TAG, "EXCEPTION! " + e);
+        } finally {
+            cursor.close(); // have to close the cursor to release the resources
+            return task;
         }
     }
 
@@ -246,7 +265,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cursor.moveToFirst();
             lookForEmp.setId(cursor.getInt(0));
             lookForEmp.seteName(cursor.getString(1));
-
 
         } catch (Exception e) {
             Log.d(TAG, "EXCEPTION! " + e);

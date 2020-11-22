@@ -55,7 +55,7 @@ public class MarkAttendanceActivity extends AppCompatActivity {
 
         SharedPreferences loggedInInfo = PreferenceManager.getDefaultSharedPreferences(this);
         txtName.setText(loggedInInfo.getString("EmpName", null));
-        //txtName.setText(loggedInInfo.getInt("id", 0));
+        //txtName.setText(loggedInInfo.getString("idLog", null));
         //(loggedInInfo.getInt("id", 0));
 
 
@@ -113,7 +113,7 @@ public class MarkAttendanceActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Attendance att = new Attendance();
 
-                att.setEmployeeID(1);
+                att.setEmployeeID(loggedInInfo.getInt("id", 0));
                 att.setAttDate(date.getText().toString());
                 att.setaClockIn(clockIn.getText().toString());
                 att.setaClockOut(clockOut.getText().toString());

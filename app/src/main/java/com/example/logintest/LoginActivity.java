@@ -13,12 +13,13 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
+
     //############ Declaring attributes ############//
     EditText et_username, et_password;
     Button btn_login;
     DatabaseHelper databaseHelper;
     Employee loggedEmp = new Employee();
-
+    public static SharedPreferences loggedInInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         et_username = findViewById(R.id.et_username);
         et_password = findViewById(R.id.et_password);
         btn_login = findViewById(R.id.btn_login);
-        SharedPreferences loggedInInfo = PreferenceManager.getDefaultSharedPreferences(this);
+        loggedInInfo = PreferenceManager.getDefaultSharedPreferences(this);
 
         databaseHelper = new DatabaseHelper(LoginActivity.this);
 
@@ -43,10 +44,9 @@ public class LoginActivity extends AppCompatActivity {
                     loggedEmp = databaseHelper.lookForEmp(et_username.getText().toString());
 
                     SharedPreferences.Editor editor = loggedInInfo.edit();
-                    editor.putString("id", loggedEmp.geteUsername());
+                    editor.putInt("id", loggedEmp.getId());
                     editor.putString("EmpName", loggedEmp.geteName());
                     editor.commit();
-
 
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(intent);

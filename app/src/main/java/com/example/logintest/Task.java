@@ -2,69 +2,64 @@ package com.example.logintest;
 
 public class Task extends Employee {
 
-    private int tID;
-    private String tName;
-    private String tDescr;
-    private String tAssignee;
-    private String tStat;
+    private int task_id;
+    private int EmployeeID;
+    private String TaskName;
+    private String TaskDescription;
+    private String TaskStatus;
 
     public Task(){}
 
     public Task(String taskname, String taskdesc, String taskstatus){
-        this.tName = taskname;
-        this.tDescr = taskdesc;
-        this.tAssignee = super.geteName();
-        this.tStat = taskstatus;
+        this.TaskName = taskname;
+        this.TaskDescription = taskdesc;
+        this.TaskStatus = taskstatus;
     }
 
     @Override
     public String toString() {
         return "Task{" +
-                ", tAssignee='" + tAssignee + '\'' +
-                ", tName='" + tName + '\'' +
-                ", tDescr='" + tDescr + '\'' +
-                ", tStat='" + tStat + '\'' +
+                ", EmployeeID='" + EmployeeID + '\'' +
+                ", TaskName='" + TaskName + '\'' +
+                ", TaskDescription='" + TaskDescription + '\'' +
+                ", TaskStatus='" + TaskStatus + '\'' +
                 '}';
     }
 
     public int gettId() {
-        return this.tID;
+        return this.task_id;
     }
 
     public void settId(int id) {
-        this.tID = id;
+        this.task_id = id;
     }
 
-    public String gettName() {
-        return this.tName;
+    public String getTaskName() {
+        return this.TaskName;
     }
 
-    public void settName(String name) {
-        this.tName = name;
+    public void setTaskName(String name) {
+        this.TaskName = name;
     }
 
     public String gettDescription() {
-        return this.tDescr;
+        return this.TaskDescription;
     }
+
+    public int getEmployeeID() {return EmployeeID;}
+
+    public void setEmployeeID(int employeeID) {EmployeeID = employeeID;}
 
     public void settDescription(String dscp) {
-        this.tDescr = dscp;
-    }
-
-    public String gettAssignee() {
-        return this.tAssignee;
-    }
-
-    public void settAssignee(String assignee) {
-        this.tAssignee = assignee;
+        this.TaskDescription = dscp;
     }
 
     public String gettStatus() {
-        return this.tStat;
+        return this.TaskStatus;
     }
 
     public void settStatus(String stat) {
-        this.tStat = stat;
+        this.TaskStatus = stat;
     }
 
 }
