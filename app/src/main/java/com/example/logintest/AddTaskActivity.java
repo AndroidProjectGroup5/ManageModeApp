@@ -47,13 +47,11 @@ public class AddTaskActivity extends AppCompatActivity {
                 Task tsk = new Task();
                 selectedStatus = task_status.getSelectedItem().toString();
 
-                tsk.setEmployeeID(loggedInInfo.getInt("id", 0));
-                tsk.setTaskName(task_name.getText().toString());
-                tsk.setDescription(task_description.getText().toString());
-                tsk.setStatus(selectedStatus);
-
                 try{
-                    Toast.makeText(AddTaskActivity.this, tsk.toString(), Toast.LENGTH_SHORT).show();
+                    tsk.setEmployeeID(loggedInInfo.getInt("id", 0));
+                    tsk.setTaskName(task_name.getText().toString());
+                    tsk.setDescription(task_description.getText().toString());
+                    tsk.setStatus(selectedStatus);
 
                 }catch (Exception e) {
                     Toast.makeText(AddTaskActivity.this, "Error creating the task", Toast.LENGTH_SHORT).show();
@@ -61,7 +59,13 @@ public class AddTaskActivity extends AppCompatActivity {
                 }
 
                 Boolean success = databaseHelper.addTask(tsk);
-                Toast.makeText(AddTaskActivity.this, "Success = " + success, Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddTaskActivity.this, "Task added successfully!", Toast.LENGTH_SHORT).show();
+                if(success == true){
+                    startActivity(new Intent(AddTaskActivity.this, ViewTaskActivity.class));
+                }else{
+                    Toast.makeText(AddTaskActivity.this, "Error, please try again.", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
