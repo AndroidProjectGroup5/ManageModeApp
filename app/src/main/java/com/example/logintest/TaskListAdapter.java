@@ -16,11 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class TaskListAdapter extends ListAdapter<Task, TaskListAdapter.TaskViewHolder> {
     public DatabaseHelper mDB;
-    int EmployeeID;
+    int EmpID;
 
-    protected TaskListAdapter(int EmployeeID, DatabaseHelper db, @NonNull DiffUtil.ItemCallback<Task> diffCallback) {
+    protected TaskListAdapter(DatabaseHelper db, @NonNull DiffUtil.ItemCallback<Task> diffCallback, int empID) {
         super(diffCallback);
-        this.EmployeeID = EmployeeID;
+        this.EmpID = empID;
         mDB = db;
     }
 
@@ -38,7 +38,7 @@ public class TaskListAdapter extends ListAdapter<Task, TaskListAdapter.TaskViewH
 
     @Override
     public void onBindViewHolder(@NonNull TaskListAdapter.TaskViewHolder holder, int position) {
-        Task current = mDB.searchTask(position, EmployeeID);
+        Task current = mDB.searchTask(position, EmpID);
         holder.bind(current);
     }
 

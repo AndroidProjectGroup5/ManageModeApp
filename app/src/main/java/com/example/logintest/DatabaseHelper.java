@@ -125,7 +125,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public Task searchTask(int position, int employeeID) {
-        String query = "SELECT * FROM task WHERE EmployeeID = 'employeeID' ORDER BY TaskName ASC LIMIT " + position + ", 1";
+        int emp = employeeID;
+        String query = "SELECT * FROM task WHERE EmployeeID = '" + emp +"' ORDER BY TaskName ASC LIMIT " + position + ", 1";
         Cursor cursor = null;
         Task task = new Task();
         try {

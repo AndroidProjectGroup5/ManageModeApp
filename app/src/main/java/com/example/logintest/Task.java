@@ -46,9 +46,9 @@ public class Task extends Employee {
         return this.TaskDescription;
     }
 
-    public int getEmployeeID() {return EmployeeID;}
+    public int getEmployeeID() {return this.EmployeeID;}
 
-    public void setEmployeeID(int employeeID) {EmployeeID = employeeID;}
+    public void setEmployeeID(int employeeID) {this.EmployeeID = employeeID;}
 
     public void settDescription(String dscp) {
         this.TaskDescription = dscp;
