@@ -26,7 +26,7 @@ public class Task extends Employee {
                 '}';
     }
 
-    public int gettId() {
+    public int getId() {
         return this.task_id;
     }
 
@@ -42,7 +42,7 @@ public class Task extends Employee {
         this.TaskName = name;
     }
 
-    public String gettDescription() {
+    public String getDescription() {
         return this.TaskDescription;
     }
 
@@ -50,15 +50,15 @@ public class Task extends Employee {
 
     public void setEmployeeID(int employeeID) {this.EmployeeID = employeeID;}
 
-    public void settDescription(String dscp) {
+    public void setDescription(String dscp) {
         this.TaskDescription = dscp;
     }
 
-    public String gettStatus() {
+    public String getStatus() {
         return this.TaskStatus;
     }
 
-    public void settStatus(String stat) {
+    public void setStatus(String stat) {
         this.TaskStatus = stat;
     }
 

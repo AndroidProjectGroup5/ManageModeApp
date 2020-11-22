@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +17,8 @@ public class AddTaskActivity extends AppCompatActivity {
 
     EditText task_name, task_description;
     Button btn_home, btn_save_task, btn_back;
-    String task_status;
+    Spinner task_status;
+    String selectedStatus;
     TextView empName;
 
     @Override
@@ -28,23 +30,27 @@ public class AddTaskActivity extends AppCompatActivity {
         btn_save_task = findViewById(R.id.btnSaveTask);
         btn_home = findViewById(R.id.btnBackHomeAddNewTask);
         empName = findViewById(R.id.txtEmpName2);
+        task_status = findViewById(R.id.spinnerStatusGroup);
+        task_name = findViewById(R.id.inputTaskName);
+        task_description = findViewById(R.id.inputTaskDescription);
+
 
         DatabaseHelper databaseHelper = new DatabaseHelper(AddTaskActivity.this);
         SharedPreferences loggedInInfo = PreferenceManager.getDefaultSharedPreferences(this);
         empName.setText(loggedInInfo.getString("EmpName", null));
 
-        task_name = findViewById(R.id.inputTaskName);
-        task_description = findViewById(R.id.inputTaskDescription);
+
 
         btn_save_task.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Task tsk = new Task();
+                selectedStatus = task_status.getSelectedItem().toString();
 
                 tsk.setEmployeeID(loggedInInfo.getInt("id", 0));
                 tsk.setTaskName(task_name.getText().toString());
-                tsk.settDescription(task_description.getText().toString());
-                tsk.settStatus(task_status);
+                tsk.setDescription(task_description.getText().toString());
+                tsk.setStatus(selectedStatus);
 
                 try{
                     Toast.makeText(AddTaskActivity.this, tsk.toString(), Toast.LENGTH_SHORT).show();

@@ -67,7 +67,7 @@ public class TaskListAdapter extends ListAdapter<Task, TaskListAdapter.TaskViewH
                 @Override
                 public void onClick(View v) {
                     Log.v("TaskViewHolder", "Position: " + getAdapterPosition());
-                    mDB.delete(tsk.gettId());
+                    mDB.delete(tsk.getId());
                     notifyItemRemoved(getAdapterPosition());
                 }
             });

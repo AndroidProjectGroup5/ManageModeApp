@@ -113,8 +113,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put("EmployeeID", tsk.getEmployeeID());
         cv.put("TaskName", tsk.getTaskName());
-        cv.put("TaskDescription", tsk.gettDescription());
-        cv.put("TaskStatus", tsk.gettStatus());
+        cv.put("TaskDescription", tsk.getDescription());
+        cv.put("TaskStatus", tsk.getStatus());
 
         long insert = db.insert("task", null, cv);
         if (insert == -1) {
@@ -139,8 +139,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             task.settId(cursor.getInt(0));
             task.setEmployeeID(cursor.getInt(1));
             task.setTaskName(cursor.getString(2));
-            task.settDescription(cursor.getString(3));
-            task.settStatus(cursor.getString(4));
+            task.setDescription(cursor.getString(3));
+            task.setStatus(cursor.getString(4));
 
         } catch (Exception e) {
             Log.d(TAG, "EXCEPTION! " + e);
