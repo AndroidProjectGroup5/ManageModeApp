@@ -1,30 +1,24 @@
 package com.example.logintest;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.preference.PreferenceManager;
-
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import java.text.DateFormat;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
+import java.text.DateFormat;
 import java.util.Calendar;
-import java.util.List;
 
 @RequiresApi(api = Build.VERSION_CODES.M)
 public class MarkAttendanceActivity extends AppCompatActivity {
@@ -45,7 +39,7 @@ public class MarkAttendanceActivity extends AppCompatActivity {
             c.set(Calendar.YEAR, i);
             c.set(Calendar.MONTH, i1);
             c.set(Calendar.DAY_OF_MONTH, i2);
-            date.setText("Date: " + fmtDate.format(c.getTime()));
+            date.setText(fmtDate.format(c.getTime()));
         }
     }; // event listener after user select a date from calendar
 
