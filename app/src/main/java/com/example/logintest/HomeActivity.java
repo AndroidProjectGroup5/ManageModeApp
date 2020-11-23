@@ -15,7 +15,7 @@ public class HomeActivity extends AppCompatActivity {
 
     //############ Declaring attributes ############//
     Button btn_Attendance,
-            btn_vEmp, btn_vTask;
+            btn_vEmp, btn_vTask, btn_Logout;
 
 
     @Override
@@ -28,7 +28,7 @@ public class HomeActivity extends AppCompatActivity {
         btn_Attendance = findViewById(R.id.btn_Attendance);
         btn_vEmp = findViewById(R.id.btn_ViewEmployees);
         btn_vTask = findViewById(R.id.btn_ViewTask);
-
+        btn_Logout = findViewById(R.id.btn_LogOut);
 
         //----- Setting all the listeners -----//
         btn_Attendance.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +50,13 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, ViewTaskActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        btn_Logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
             }
         });
     }

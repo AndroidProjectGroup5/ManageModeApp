@@ -15,6 +15,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     static String name = "database33";
     static int version = 4;
+    public int TaskId = 1;
 
     private static final String TAG = DatabaseHelper.class.getSimpleName();
 
@@ -124,9 +125,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void SetEditTaskId(int taskId) {
+        this.TaskId = taskId;
+    }
+
+    public boolean editTask(Task tsk) {
+        SQLiteDatabase db = this.getWritableDatabase();
+       /* ContentValues cv = new ContentValues();
+        cv.put("EmployeeID", tsk.getEmployeeID());
+        cv.put("TaskName", tsk.getTaskName());
+        cv.put("TaskDescription", tsk.getDescription());
+        cv.put("TaskStatus", tsk.getStatus());
+
+        // long update = db.update("task", cv, "task_id=?", new String[]{String.valueOf(TaskId)});*/
+
+        String query = "UPDATE  task SET EmployeeID = '" + tsk.getEmployeeID() + "',  TaskName = '" + tsk.getTaskName() + "' , TaskDescription = '" + tsk.getDescription() + "' ,TaskStatus='" + tsk.getStatus() + "' WHERE task_id = " + TaskId + " ";
+
+        try {
+            if (mWritableDB == null) {
+                mWritableDB = getWritableDatabase();
+            }
+            db.execSQL(query);
+            return true;
+        } catch (Exception e) {
+            Log.d(TAG, "EXCEPTION! " + e);
+            return false;
+        }
+
+    }
+
+
     public Task searchTask(int position, int employeeID) {
         int emp = employeeID;
-        String query = "SELECT * FROM task WHERE EmployeeID = '" + emp +"' ORDER BY TaskName ASC LIMIT " + position + ", 1";
+        String query = "SELECT * FROM task WHERE EmployeeID = '" + emp + "' ORDER BY TaskName ASC LIMIT " + position + ", 1";
         Cursor cursor = null;
         Task task = new Task();
         try {

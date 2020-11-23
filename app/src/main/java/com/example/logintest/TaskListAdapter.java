@@ -1,6 +1,7 @@
 package com.example.logintest;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
+
+import static androidx.core.content.ContextCompat.startActivity;
 
 public class TaskListAdapter extends ListAdapter<Task, TaskListAdapter.TaskViewHolder> {
     public DatabaseHelper mDB;
@@ -66,9 +69,17 @@ public class TaskListAdapter extends ListAdapter<Task, TaskListAdapter.TaskViewH
             taskTextView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.v("TaskViewHolder", "Position: " + getAdapterPosition());
-                    mDB.delete(tsk.getId());
-                    notifyItemRemoved(getAdapterPosition());
+                    Log.v("TaskViewHolder", "Position: " + tsk.getId());
+                    //mDB.delete(tsk.getId());
+
+                    mDB.SetEditTaskId(tsk.getId());
+                    Intent myIntent = new Intent(v.getContext(), EditTaskActivity.class);
+                    // myIntent.putExtra("task_id", tsk.getId());
+                    myIntent.putExtra("task_name", tsk.getTaskName());
+                    myIntent.putExtra("task_description", tsk.getDescription());
+                    myIntent.putExtra("task_status", tsk.getStatus());
+                    Context context = v.getContext();
+                    context.startActivity(myIntent);
                 }
             });
         }

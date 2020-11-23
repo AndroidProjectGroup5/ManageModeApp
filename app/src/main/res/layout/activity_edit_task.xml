@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/managemode_blue"
-    tools:context=".AddTaskActivity">
+    tools:context=".EditTaskActivity">
 
     <TextView
-        android:id="@+id/txtEmp2"
+        android:id="@+id/txtEditEmp2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -16,18 +16,18 @@
         android:text="@string/textEmpName"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputTaskDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/inputEditTaskDescription" />
 
     <TextView
-        android:id="@+id/txtEmpName2"
+        android:id="@+id/txtEditEmpName"
         android:layout_width="177dp"
         android:layout_height="30dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:textSize="20sp"
         android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@+id/txtEmp2"
-        app:layout_constraintTop_toBottomOf="@+id/inputTaskDescription" />
+        app:layout_constraintStart_toEndOf="@+id/txtEditEmp2"
+        app:layout_constraintTop_toBottomOf="@+id/inputEditTaskDescription" />
 
     <Button
         android:id="@+id/btnBackHomeAddNewTask"
@@ -40,10 +40,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSaveTask" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSaveEditTask" />
 
     <Button
-        android:id="@+id/btnBackAddTask"
+        android:id="@+id/btnSaveEditTask"
+        style="@style/ButtonStyle"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/btnSaveEditChanges"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerEditStatusGroup" />
+
+    <Button
+        android:id="@+id/btnEditBackAddTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="105dp"
@@ -53,36 +65,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSaveTask" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSaveEditTask" />
 
-    <Button
-        android:id="@+id/btnSaveTask"
-        style="@style/ButtonStyle"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/btnSaveTask"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerStatusGroup" />
 
     <TextView
-        android:id="@+id/txtTaskTitle"
+        android:id="@+id/txtEditTaskTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="76dp"
-        android:text="@string/addTask"
+        android:text="@string/editTask"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.27"
+        app:layout_constraintHorizontal_bias="0.23"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtTaskName"
+        android:id="@+id/txtEditTaskName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -93,10 +94,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.238"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTaskTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEditTaskTitle" />
 
     <EditText
-        android:id="@+id/inputTaskName"
+        android:id="@+id/inputEditTaskName"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
@@ -107,11 +108,11 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.24"
-        app:layout_constraintStart_toEndOf="@+id/txtTaskName"
-        app:layout_constraintTop_toBottomOf="@+id/txtTaskTitle" />
+        app:layout_constraintStart_toEndOf="@+id/txtEditTaskName"
+        app:layout_constraintTop_toBottomOf="@+id/txtEditTaskTitle" />
 
     <EditText
-        android:id="@+id/inputTaskDescription"
+        android:id="@+id/inputEditTaskDescription"
         android:layout_width="250sp"
         android:layout_height="90sp"
         android:layout_marginStart="8dp"
@@ -123,10 +124,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.464"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputTaskName" />
+        app:layout_constraintTop_toBottomOf="@+id/inputEditTaskName" />
 
     <Spinner
-        android:id="@+id/spinnerStatusGroup"
+        android:id="@+id/spinnerEditStatusGroup"
         android:layout_width="250dp"
         android:layout_height="40dp"
         android:layout_marginTop="24dp"
@@ -136,6 +137,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmpName2" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEditEmpName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

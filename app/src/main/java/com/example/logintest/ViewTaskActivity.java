@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class ViewTaskActivity extends AppCompatActivity {
 
-    Button btn_home, btn_back, btn_addtask;
+    Button btn_home, btn_addtask;
     DatabaseHelper mDB;
     TaskListAdapter adapter;
     int emp;
@@ -42,7 +42,7 @@ public class ViewTaskActivity extends AppCompatActivity {
         btn_addtask = findViewById(R.id.btn_AddTask);
         btn_home = findViewById(R.id.btnBackHomeViewTask);
 
-       // Toast.makeText(this, "EmployeeID = " + emp, Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, "EmployeeID = " + emp, Toast.LENGTH_SHORT).show();
         btn_addtask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

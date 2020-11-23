@@ -29,11 +29,6 @@
         <item>On going</item>
         <item>Finished</item>
     </string-array>
-    <string-array name="txtEmployee">
-        <item>Employee 1</item>
-        <item>Employee 2</item>
-        <item>Employee 3</item>
-    </string-array>
     <string name="Statusprompt">Select Status</string>
     <string name="txtTaskName">Task Name</string>
     <string name="hintTaskDescription">Task Description</string>
@@ -48,7 +43,9 @@
     <string name="btn_addEmployee">Add Employee</string>
     <string name="btnSaveAttendance">Save Attendance</string>
     <string name="btnHome">Home</string>
-    <string name="btnChangeTaskStatus">Save</string>
-    <string name="textEmpName">"Employee: "</string>
-
+    <string name="textEmpName">Employee:  </string>
+    <string name="btnLogout">Log Out</string>
+    <string name="btnSaveEditChanges">Save</string>
+    <string name="editTask">Edit Task</string>
+    
 </resources>

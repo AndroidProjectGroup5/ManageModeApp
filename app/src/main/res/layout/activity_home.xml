@@ -6,72 +6,88 @@
     android:layout_height="match_parent">
 
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/home"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/managemode_blue"
-    tools:context=".HomeActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/managemode_blue"
+        tools:context=".HomeActivity">
 
-    <ImageView
-        android:id="@+id/logoMM_main2"
-        android:layout_width="355dp"
-        android:layout_height="245dp"
-        android:layout_marginTop="4dp"
-        android:contentDescription="@string/LogoDescription"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_managemode_neg2" />
+        <ImageView
+            android:id="@+id/logoMM_main2"
+            android:layout_width="355dp"
+            android:layout_height="245dp"
+            android:layout_marginTop="4dp"
+            android:contentDescription="@string/LogoDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo_managemode_neg2" />
 
-    <Button
-        android:id="@+id/btn_Attendance"
-        style="@style/ButtonStyle"
-        android:layout_width="226dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/managemode_golden"
-        android:text="@string/markAttendance"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoMM_main2" />
+        <Button
+            android:id="@+id/btn_Attendance"
+            style="@style/ButtonStyle"
+            android:layout_width="226dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/managemode_golden"
+            android:text="@string/markAttendance"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logoMM_main2" />
 
-    <Button
-        android:id="@+id/btn_ViewEmployees"
-        style="@style/ButtonStyle"
-        android:layout_width="226dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/managemode_golden"
-        android:text="@string/viewEmployee"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Attendance" />
+        <Button
+            android:id="@+id/btn_ViewEmployees"
+            style="@style/ButtonStyle"
+            android:layout_width="226dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/managemode_golden"
+            android:text="@string/viewEmployee"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_Attendance" />
 
-    <Button
-        android:id="@+id/btn_ViewTask"
-        style="@style/ButtonStyle"
-        android:layout_width="226dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="210dp"
-        android:backgroundTint="@color/managemode_golden"
-        android:text="@string/viewTasks"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_ViewEmployees" />
+        <Button
+            android:id="@+id/btn_ViewTask"
+            style="@style/ButtonStyle"
+            android:layout_width="226dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="210dp"
+            android:backgroundTint="@color/managemode_golden"
+            android:text="@string/viewTasks"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_ViewEmployees" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btn_LogOut"
+            style="@style/ButtonStyle"
+            android:layout_width="226dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/managemode_golden"
+            android:text="@string/btnLogout"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_ViewTask" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
