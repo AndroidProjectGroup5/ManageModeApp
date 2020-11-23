@@ -29,9 +29,10 @@
             android:id="@+id/txtEmpName"
             android:layout_width="177dp"
             android:layout_height="30dp"
-            android:layout_marginStart="38dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="28dp"
+            android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +54,7 @@
 
         <Button
             android:id="@+id/btnSetClockOut"
-            android:layout_width="wrap_content"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/clockOut"
@@ -64,7 +65,7 @@
 
         <Button
             android:id="@+id/btnSetDate"
-            android:layout_width="wrap_content"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/btnDatepicker"
@@ -75,7 +76,7 @@
 
         <Button
             android:id="@+id/btnSetClockIn"
-            android:layout_width="wrap_content"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/clockIn"
@@ -90,7 +91,7 @@
             android:layout_width="226dp"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:text="@string/btnSaveAttendance"
             android:textAlignment="center"
@@ -117,11 +118,11 @@
             android:id="@+id/txtClockOutResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="44dp"
-            android:textAlignment="textStart"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.202"
+            app:layout_constraintHorizontal_bias="0.26"
             app:layout_constraintStart_toEndOf="@+id/btnSetClockOut"
             app:layout_constraintTop_toBottomOf="@+id/txtClockInResult" />
 
@@ -129,24 +130,24 @@
             android:id="@+id/txtAttendDateResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="54dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="28dp"
-            android:textAlignment="textStart"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.064"
+            app:layout_constraintHorizontal_bias="0.269"
             app:layout_constraintStart_toEndOf="@+id/btnSetDate"
-            app:layout_constraintTop_toBottomOf="@+id/txtAttendanceDate" />
+            app:layout_constraintTop_toBottomOf="@+id/txtAttendanceDate"
+            tools:textAlignment="textStart" />
 
         <TextView
             android:id="@+id/txtClockInResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="44dp"
-            android:textAlignment="textStart"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.241"
+            app:layout_constraintHorizontal_bias="0.26"
             app:layout_constraintStart_toEndOf="@+id/btnSetClockIn"
             app:layout_constraintTop_toBottomOf="@+id/txtAttendDateResult" />
 

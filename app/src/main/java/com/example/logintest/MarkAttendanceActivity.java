@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -52,6 +53,8 @@ public class MarkAttendanceActivity extends AppCompatActivity {
         clockIn = findViewById(R.id.txtClockInResult);
         clockOut = findViewById(R.id.txtClockOutResult);
         txtName = findViewById(R.id.txtEmpName);
+        txtName.setBackgroundColor(Color.BLUE);
+        txtName.setPadding(5, 5, 5, 5);
 
         SharedPreferences loggedInInfo = PreferenceManager.getDefaultSharedPreferences(this);
         txtName.setText(loggedInInfo.getString("EmpName", null));

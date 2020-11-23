@@ -6,7 +6,7 @@
 
     <TextView
         android:id="@+id/txtTask"
-        style="@style/ManageModeTheme"
+        style="@style/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18sp"
