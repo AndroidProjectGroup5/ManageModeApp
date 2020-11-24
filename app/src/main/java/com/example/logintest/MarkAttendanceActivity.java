@@ -122,15 +122,22 @@ public class MarkAttendanceActivity extends AppCompatActivity {
                 att.setaClockOut(clockOut.getText().toString());
 
                 try{
-                    Toast.makeText(MarkAttendanceActivity.this, att.toString(), Toast.LENGTH_SHORT).show();
+             //       Toast.makeText(MarkAttendanceActivity.this, att.toString(), Toast.LENGTH_SHORT).show();
+                    if(!att.getAttDate().isEmpty()){
+                        Toast.makeText(MarkAttendanceActivity.this, "Attendance marked successfully!", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Toast.makeText(MarkAttendanceActivity.this, "Error. Please enter date.", Toast.LENGTH_SHORT).show();
+                        att = new Attendance(0 , "error", "error", "error");
+                    }
 
                 }catch (Exception e) {
-                    Toast.makeText(MarkAttendanceActivity.this, "Error creating the attendance object", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MarkAttendanceActivity.this, "Error. Please enter date.", Toast.LENGTH_SHORT).show();
                     att = new Attendance(0 , "error", "error", "error");
                 }
 
                 Boolean success = databaseHelper.saveAttendance(att);
-                Toast.makeText(MarkAttendanceActivity.this, "Success = " + success, Toast.LENGTH_SHORT).show();
+            //    Toast.makeText(MarkAttendanceActivity.this, "Success = " + success, Toast.LENGTH_SHORT).show();
 
             }
         });
