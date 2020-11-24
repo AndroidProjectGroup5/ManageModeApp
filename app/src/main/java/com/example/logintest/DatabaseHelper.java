@@ -15,7 +15,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     static String name = "database33";
     static int version = 4;
-    public int TaskId = 1;
+    //  public int TaskId = 1;
 
     private static final String TAG = DatabaseHelper.class.getSimpleName();
 
@@ -125,9 +125,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void SetEditTaskId(int taskId) {
-        this.TaskId = taskId;
-    }
 
     public boolean editTask(Task tsk) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -139,7 +136,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // long update = db.update("task", cv, "task_id=?", new String[]{String.valueOf(TaskId)});*/
 
-        String query = "UPDATE  task SET EmployeeID = '" + tsk.getEmployeeID() + "',  TaskName = '" + tsk.getTaskName() + "' , TaskDescription = '" + tsk.getDescription() + "' ,TaskStatus='" + tsk.getStatus() + "' WHERE task_id = " + TaskId + " ";
+        String query = "UPDATE  task SET EmployeeID = '" + tsk.getEmployeeID() + "',  TaskName = '" + tsk.getTaskName() + "' , TaskDescription = '" + tsk.getDescription() + "' ,TaskStatus='" + tsk.getStatus() + "' WHERE task_id = " + 1 + " ";
 
         try {
             if (mWritableDB == null) {
@@ -230,19 +227,55 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public int delete(int id) {
-        int deleted = 0;
+    public boolean delete(int id) {
+
+        boolean result = false;
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "DELETE FROM user WHERE  id = " + id + " ";
+
         try {
             if (mWritableDB == null) {
                 mWritableDB = getWritableDatabase();
+                db.execSQL(query);
+                result = true;
             }
-            deleted = mWritableDB.delete("user", 0 + " =? ", new String[]{String.valueOf(id)});
+
+        } catch (Exception e) {
+            Log.d(TAG, "EXCEPTION! " + e);
+            result = true;
+        }
+        return result;
+       /*  try {
+            if (mWritableDB == null) {
+                mWritableDB = getWritableDatabase();
+            }
+            deleted = mWritableDB.delete("user", 0 + "id=?", new String[]{String.valueOf(id)});
         } catch (Exception e) {
             Log.d(TAG, "Delete Exception!" + e.getMessage());
         }
-        return deleted;
+        return deleted;*/
     }
 
+    public boolean deleteTask(int id) {
+
+        boolean result = false;
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "DELETE FROM task WHERE  task_id = " + id + " ";
+
+        try {
+            if (mWritableDB == null) {
+                mWritableDB = getWritableDatabase();
+                db.execSQL(query);
+                result = true;
+            }
+
+        } catch (Exception e) {
+            Log.d(TAG, "EXCEPTION! " + e);
+            result = true;
+        }
+        return result;
+
+    }
 //----- NOTE: I don't think we need this one, Ive commented it for now.
 /*    public void insertUsers(ContentValues contentValues){
         getWritableDatabase().insert("user","", contentValues);

@@ -34,8 +34,8 @@
     <string name="hintTaskDescription">Task Description</string>
     <string name="btnSaveTask">Save Task</string>
     <string name="promptAssignee">Select Employee</string>
-    <string name="employeeList">Employees List</string>
-    <string name="TaskList">Tasks List</string>
+    <string name="employeeList">Employees</string>
+    <string name="TaskList">Your Tasks</string>
     <string name="txtAssignee">Assignee</string>
     <string name="txtViewTaskStatus">Status</string>
     <string name="txtChangeStatus">Change Status</string>
@@ -47,5 +47,5 @@
     <string name="btnLogout">Log Out</string>
     <string name="btnSaveEditChanges">Save</string>
     <string name="editTask">Edit Task</string>
-    
+
 </resources>

@@ -70,16 +70,17 @@ public class TaskListAdapter extends ListAdapter<Task, TaskListAdapter.TaskViewH
                 @Override
                 public void onClick(View v) {
                     Log.v("TaskViewHolder", "Position: " + tsk.getId());
-                    //mDB.delete(tsk.getId());
+                    mDB.deleteTask(tsk.getId());
+                    notifyItemRemoved(getAdapterPosition());
 
-                    mDB.SetEditTaskId(tsk.getId());
+                   /* mDB.SetEditTaskId(tsk.getId());
                     Intent myIntent = new Intent(v.getContext(), EditTaskActivity.class);
                     // myIntent.putExtra("task_id", tsk.getId());
                     myIntent.putExtra("task_name", tsk.getTaskName());
                     myIntent.putExtra("task_description", tsk.getDescription());
                     myIntent.putExtra("task_status", tsk.getStatus());
                     Context context = v.getContext();
-                    context.startActivity(myIntent);
+                    context.startActivity(myIntent);*/
                 }
             });
         }
